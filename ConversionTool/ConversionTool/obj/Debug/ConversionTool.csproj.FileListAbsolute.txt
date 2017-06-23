@@ -1,0 +1,9 @@
+c:\users\319887725\documents\visual studio 2015\Projects\ConversionTool\ConversionTool\bin\Debug\ConversionTool.exe.config
+c:\users\319887725\documents\visual studio 2015\Projects\ConversionTool\ConversionTool\bin\Debug\ConversionTool.exe
+c:\users\319887725\documents\visual studio 2015\Projects\ConversionTool\ConversionTool\bin\Debug\ConversionTool.pdb
+c:\users\319887725\documents\visual studio 2015\Projects\ConversionTool\ConversionTool\obj\Debug\ConversionTool.csprojResolveAssemblyReference.cache
+c:\users\319887725\documents\visual studio 2015\Projects\ConversionTool\ConversionTool\obj\Debug\ConversionTool.ConversionTool.resources
+c:\users\319887725\documents\visual studio 2015\Projects\ConversionTool\ConversionTool\obj\Debug\ConversionTool.Properties.Resources.resources
+c:\users\319887725\documents\visual studio 2015\Projects\ConversionTool\ConversionTool\obj\Debug\ConversionTool.csproj.GenerateResource.Cache
+c:\users\319887725\documents\visual studio 2015\Projects\ConversionTool\ConversionTool\obj\Debug\ConversionTool.exe
+c:\users\319887725\documents\visual studio 2015\Projects\ConversionTool\ConversionTool\obj\Debug\ConversionTool.pdb

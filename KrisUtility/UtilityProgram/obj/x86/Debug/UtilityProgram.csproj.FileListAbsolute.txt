@@ -1,0 +1,20 @@
+H:\TabControl\TabControl\obj\x86\Debug\UtilityProgram.Properties.Resources.resources
+H:\TabControl\TabControl\obj\x86\Debug\UtilityProgram.csproj.GenerateResource.Cache
+H:\TabControl\TabControl\bin\Debug\UtilityProgram.exe
+H:\TabControl\TabControl\bin\Debug\UtilityProgram.pdb
+H:\TabControl\TabControl\obj\x86\Debug\UtilityProgram.exe
+H:\TabControl\TabControl\obj\x86\Debug\UtilityProgram.pdb
+H:\TabControl\TabControl\obj\x86\Debug\UtilityProgram.UtilityProgram.resources
+H:\TabControl\TabControl\obj\x86\Debug\UtilityProgram.csprojResolveAssemblyReference.cache
+H:\KrisUtility\TabControl\obj\x86\Debug\UtilityProgram.exe
+H:\KrisUtility\TabControl\obj\x86\Debug\UtilityProgram.pdb
+H:\KrisUtility\UtilityProgram\obj\x86\Debug\UtilityProgram.exe
+H:\KrisUtility\UtilityProgram\obj\x86\Debug\UtilityProgram.pdb
+H:\KrisUtility\UtilityProgram\bin\Debug\UtilityProgram.exe
+H:\KrisUtility\UtilityProgram\bin\Debug\UtilityProgram.pdb
+H:\KrisUtility\UtilityProgram\obj\x86\Debug\UtilityProgram.csprojResolveAssemblyReference.cache
+H:\KrisUtility\UtilityProgram\obj\x86\Debug\UtilityProgram.UtilityProgram.resources
+H:\KrisUtility\UtilityProgram\obj\x86\Debug\UtilityProgram.Properties.Resources.resources
+H:\KrisUtility\UtilityProgram\obj\x86\Debug\UtilityProgram.csproj.GenerateResource.Cache
+C:\Users\319887725\Documents\Visual Studio 2015\Projects\KrisUtility\UtilityProgram\obj\x86\Debug\UtilityProgram.exe
+C:\Users\319887725\Documents\Visual Studio 2015\Projects\KrisUtility\UtilityProgram\obj\x86\Debug\UtilityProgram.pdb
