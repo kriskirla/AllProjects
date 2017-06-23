@@ -1,0 +1,7 @@
+H:\TabControl\TabControl\bin\Debug\TabControl.exe
+H:\TabControl\TabControl\bin\Debug\TabControl.pdb
+H:\TabControl\TabControl\obj\x86\Debug\TabControl.Form1.resources
+H:\TabControl\TabControl\obj\x86\Debug\TabControl.Properties.Resources.resources
+H:\TabControl\TabControl\obj\x86\Debug\TabControl.csproj.GenerateResource.Cache
+H:\TabControl\TabControl\obj\x86\Debug\TabControl.exe
+H:\TabControl\TabControl\obj\x86\Debug\TabControl.pdb

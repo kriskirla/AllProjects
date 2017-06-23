@@ -1,0 +1,13 @@
+User:
+ >>> Hello
+ChakBot:
+ >>> greetings
+User:
+ >>> how are you
+ChakBot:
+ >>> Not bad
+User:
+ >>> nice
+ChakBot:
+ >>> Sorry, I did not learn how to answer that =[
+

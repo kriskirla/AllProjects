@@ -1,0 +1,5 @@
+greetings;greetings=sup;hey;hello;hi
+rjokes;jokes=tell me a joke
+jokes=You're beautiful
+rfacts;facts=tell me something interesting
+facts=Did you know, 1+1 is not math but philosophy
