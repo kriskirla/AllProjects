@@ -14,7 +14,7 @@ namespace ChakBot
 {
     public partial class Form1 : Form
     {
-        List<string> temptText = new List<string>() {};
+        List<string> tempText = new List<string>() {};
         int historyIndex = 0;
         int prevIndex = 0;
         Random rnd = new Random();
@@ -44,13 +44,13 @@ namespace ChakBot
             int counter = 0;
             string categ;
             List<string> content;
+            Regex rgx = new Regex("[^a-zA-Z0-9 -]");
 
             while ((line = file.ReadLine())!= null)
             {
                 categ = line.Substring(0, line.IndexOf("="));
-                content = line.Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
+                content = line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
                 categories[categ] = content;
-                //categories.Add(categ, content);
                 counter++;
             }
 
@@ -87,7 +87,7 @@ namespace ChakBot
             OutputChat.AppendText("User:\r\n >>> " + InputChat.Text + "\r\n");
 
             // Add convo to history
-            temptText.Add(InputChat.Text);
+            tempText.Add(InputChat.Text);
             historyIndex++;
 
             // Refresh Chatbox
@@ -105,6 +105,7 @@ namespace ChakBot
         /// </summary>
         private async void ChakBot_Convo()
         {
+            // Delay for aesthetics
             for (int i = 0; i < rnd.Next(1, 3); i++)
             {
                 TypingDisplay.Text = "ChakBot is typing.";
@@ -115,15 +116,40 @@ namespace ChakBot
                 await Task.Delay(500);
             }
 
-            if (temptText[historyIndex - 1].Substring(0, temptText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "teach=")
+            if (tempText[historyIndex - 1] == "//help")
             {
-                teach_chakbot(temptText[historyIndex - 1].Substring(6,
-                    temptText[historyIndex - 1].Length - 6));
+                OutputChat.AppendText("ChakBot:\r\n >>> " +
+                    "List of functions\r\n" +
+                    "//clear >> clear the messages on screen\r\n" +
+                    "teach >> teach chakbot (root;corres>message>corres>message)\r\n" + 
+                    "e;n >> encrypt by shifting n times\r\n" +
+                    "d;n >> decrypt by shifting n times\r\n"+ "\r\n");
+                TypingDisplay.Text = "";
+            }
+            else if (tempText[historyIndex - 1] == "//clear")
+            {
+                OutputChat.Clear();
+                TypingDisplay.Text = "";
+            }
+            else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "teach=")
+            {
+                teach_chakbot(tempText[historyIndex - 1].Substring(6,
+                    tempText[historyIndex - 1].Length - 6));
+            }
+            else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf(';') + 1).ToLower() == "e;" ||
+                tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf(';') + 1).ToLower() == "d;")
+            {
+                OutputChat.AppendText("ChakBot:\r\n >>> " +
+                chakbot_en_de(tempText[historyIndex - 1].Substring(0, 1),
+                               Int32.Parse(tempText[historyIndex - 1].Substring(2, tempText[historyIndex - 1].IndexOf('=') - 2)), 
+                               tempText[historyIndex - 1].Substring(tempText[historyIndex - 1].IndexOf('=') + 1, 
+                                                                        tempText[historyIndex - 1].Length - tempText[historyIndex - 1].IndexOf('=') - 1)) + "\r\n");
+                TypingDisplay.Text = "";
             }
             else
             {
                 OutputChat.AppendText("ChakBot:\r\n >>> " +
-                    getMessage(temptText[historyIndex - 1]) + "\r\n");
+                    getMessage(tempText[historyIndex - 1]) + "\r\n");
                 TypingDisplay.Text = "";
             }
         }
@@ -139,7 +165,7 @@ namespace ChakBot
             {
                 if (prevIndex > 0)
                 {
-                    InputChat.Text = temptText[prevIndex - 1];
+                    InputChat.Text = tempText[prevIndex - 1];
                     if (prevIndex != 0) { prevIndex--; }
                 }
             }
@@ -148,7 +174,7 @@ namespace ChakBot
             {
                 if (prevIndex < historyIndex - 1)
                 {
-                    InputChat.Text = temptText[prevIndex + 1];
+                    InputChat.Text = tempText[prevIndex + 1];
                     if (prevIndex != historyIndex - 1) { prevIndex++; }
                 }
             }
@@ -190,7 +216,7 @@ namespace ChakBot
                 }
             }
 
-            return "Sorry, I did not learn how to answer that =[. Please teach me by putting: teach=categ;corres>question>Rcateg>reponse";
+            return "Sorry, I did not learn how to answer that =[. Please type //Help";
         }
 
         /// <summary>
@@ -299,13 +325,100 @@ namespace ChakBot
             while ((line = read.ReadLine()) != null)
             {
                 categ = line.Substring(0, line.IndexOf("="));
-                content = line.Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
+                content = line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
                 categories[categ] = content;
                 //categories.Add(categ, content);
                 counter++;
             }
 
             read.Close();
+        }
+
+        private string chakbot_en_de(string action, int shiftNumber, string message)
+        {
+            // Initializing variables
+            string[] AlphabetsU = new[] { "L", "B", "W", "F", "P", "X", "G", "D", "I", "A", "K", "J", "M", "V", "O", "E", "Q", "S", "Z", "U", "R", "N", "C", "H", "Y", "T" };
+            string[] AlphabetsL = new[] { "z", "v", "g", "f", "w", "d", "h", "o", "i", "j", "c", "l", "k", "n", "m", "p", "e", "r", "y", "t", "s", "x", "b", "q", "a", "u" };
+            string[] Numbers = new[] { "5", "9", "7", "3", "1", "6", "4", "8", "0", "2" };
+            string[] Signs = new[] { "!", ">", "{", "$", "%", "'", "(", "*", "&", ")", "-", "_", "=", "+", "#", "}", "?", "/", ">", "]", ";", ":", "~", "`", ",", ".", "<", "@", "^" };
+
+            string newText = "";
+
+            // First encrytion/decrytion
+            foreach (char letter in message)
+            {
+                if (AlphabetsU.Contains(letter.ToString()) || AlphabetsL.Contains(letter.ToString()))
+                {
+                    if (AlphabetsU.Contains(letter.ToString()))
+                    {
+                        newText += Shift(letter, shiftNumber, action, AlphabetsU);
+                    }
+                    else
+                    {
+                        newText += Shift(letter, shiftNumber, action, AlphabetsL);
+                    }
+                }
+                else if (Numbers.Contains(letter.ToString()))
+                {
+                    newText += Shift(letter, shiftNumber % 10, action, Numbers);
+                }
+                else if (Signs.Contains(letter.ToString()))
+                {
+                    newText += Shift(letter, shiftNumber, action, Signs);
+                }
+                else
+                {
+                    newText += letter;
+                }
+            }
+
+            return newText;
+        }
+
+        /// <summary>
+        /// Helps perform the ceasar shift
+        /// </summary>
+        /// <param name="letter">The current letter</param>
+        /// <param name="shiftNumber">Shift number</param>
+        /// <param name="shiftType">Encrypt or decrypt</param>
+        /// <param name="letterCase">Keeps the original casing</param>
+        /// <returns>The new letter</returns>
+        private static string Shift(char letter, int shiftNumber, string action, string[] letterCase)
+        {
+            int index = Array.IndexOf(letterCase, letter.ToString());
+            int newIndex = index + shiftNumber;
+
+            if (action.Equals("e"))
+            {
+                if (newIndex > letterCase.Count() - 1)
+                {
+                    while (newIndex > letterCase.Count() - 1)
+                    {
+                        newIndex = newIndex - (letterCase.Count());
+                    }
+                }
+                else
+                {
+                    newIndex = index + shiftNumber;
+                }
+            }
+            else
+            {
+                if ((index - shiftNumber) < 0)
+                {
+                    newIndex = (letterCase.Count()) + (index - shiftNumber);
+                    while (newIndex < 0)
+                    {
+                        newIndex = (letterCase.Count()) + newIndex;
+                    }
+                }
+                else
+                {
+                    newIndex = index - shiftNumber;
+                }
+            }
+
+            return letterCase[newIndex];
         }
     }
 }
