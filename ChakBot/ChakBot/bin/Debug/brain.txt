@@ -1,12 +1,13 @@
-greetings;greetings=sup;hey;hello;hi;
-rjokes;jokes=tell me a joke;tell me a funny joke
-jokes=You're beautiful;I am a chalkboard
+greetings;greetings=sup;hey;hello;hi
+rjokes;jokes=tell me a joke;tell me a funny joke;tell me something funny
+jokes=You're beautiful;I am a chalkboard;I am so funny
 rfacts;facts=tell me something interesting
 facts=Did you know, 1+1 is not math but philosophy
 rage;age=how old are you
 age=I am 0
 rname;name=whats your name
-name=I am Chakbotgquestions;ganswer=whats up
-ganswers=Talking with you right now;Talking with you right now;Nothing much
-gquestions;ganswers=whats up;how are you
+name=I am Chakbot
+gquestions;ganswer=whats up
+ganswers=Talking with you;Talking with you right now;Nothing much;nothing special
+gquestions;ganswers=whats up;how are you;whats new
 salute;salute=bye;c u;bye bye;see u;later;take care;peace;see you;bye =]

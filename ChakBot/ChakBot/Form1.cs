@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace ChakBot
 {
     public partial class Form1 : Form
     {
-        List<string> tempText = new List<string>() {};
+        List<string> tempText = new List<string>() { };
         int historyIndex = 0;
         int prevIndex = 0;
         Random rnd = new Random();
@@ -22,6 +23,14 @@ namespace ChakBot
 
         // Variables to store responses
         Dictionary<string, List<string>> categories = new Dictionary<string, List<string>>();
+
+        // Length Variables
+        double mm = 1000000, cm = 100000, m = 1000, km = 1,
+            mi = 0.62137, ft = 3280.84, inch = 39370.1, yd = 1093.61;
+
+        // Digital Size Variables
+        double b = 8, B = 1, KB = 1024, MB = 1048576, GB = 1073741824.0005517,
+            TB = 1099511627775.9133, PB = 1125899906842782.8;
 
         public Form1()
         {
@@ -46,7 +55,7 @@ namespace ChakBot
             List<string> content;
             Regex rgx = new Regex("[^a-zA-Z0-9 -]");
 
-            while ((line = file.ReadLine())!= null)
+            while ((line = file.ReadLine()) != null)
             {
                 categ = line.Substring(0, line.IndexOf("="));
                 content = line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
@@ -121,9 +130,12 @@ namespace ChakBot
                 OutputChat.AppendText("ChakBot:\r\n >>> " +
                     "List of functions\r\n" +
                     "//clear >> clear the messages on screen\r\n" +
-                    "teach >> teach chakbot (root;corres>message>corres>message)\r\n" + 
-                    "e;n >> encrypt by shifting n times\r\n" +
-                    "d;n >> decrypt by shifting n times\r\n"+ "\r\n");
+                    "teach= >> teach chakbot (root;corres>message>corres>message)\r\n" +
+                    "e;n= >> encrypt by shifting n times\r\n" +
+                    "d;n= >> decrypt by shifting n times\r\n" +
+                    "morse= >> encrypr/decrypt message into morse code\r\n" + 
+                    "cal= >> calculate\r\n" + 
+                    "convert= >> Convert units (#unit>to unit\r\n");
                 TypingDisplay.Text = "";
             }
             else if (tempText[historyIndex - 1] == "//clear")
@@ -131,20 +143,44 @@ namespace ChakBot
                 OutputChat.Clear();
                 TypingDisplay.Text = "";
             }
-            else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "teach=")
+            else if (tempText[historyIndex - 1].Contains("="))
             {
-                teach_chakbot(tempText[historyIndex - 1].Substring(6,
-                    tempText[historyIndex - 1].Length - 6));
-            }
-            else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf(';') + 1).ToLower() == "e;" ||
-                tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf(';') + 1).ToLower() == "d;")
-            {
-                OutputChat.AppendText("ChakBot:\r\n >>> " +
-                chakbot_en_de(tempText[historyIndex - 1].Substring(0, 1),
-                               Int32.Parse(tempText[historyIndex - 1].Substring(2, tempText[historyIndex - 1].IndexOf('=') - 2)), 
-                               tempText[historyIndex - 1].Substring(tempText[historyIndex - 1].IndexOf('=') + 1, 
-                                                                        tempText[historyIndex - 1].Length - tempText[historyIndex - 1].IndexOf('=') - 1)) + "\r\n");
-                TypingDisplay.Text = "";
+                if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "teach=")
+                {
+                    teach_chakbot(tempText[historyIndex - 1].Substring(6,
+                        tempText[historyIndex - 1].Length - 6));
+                }
+                else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf(';') + 1).ToLower() == "e;" ||
+                    tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf(';') + 1).ToLower() == "d;")
+                {
+                    OutputChat.AppendText("ChakBot:\r\n >>> " +
+                        chakbot_en_de(tempText[historyIndex - 1]) + "\r\n");
+                    TypingDisplay.Text = "";
+                }
+                else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "mc=")
+                {
+                    OutputChat.AppendText("ChakBot:\r\n >>> " +
+                    MorseCode(tempText[historyIndex - 1].Substring(3, tempText[historyIndex - 1].Length - 3)) + "\r\n");
+                    TypingDisplay.Text = "";
+                }
+                else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "cal=")
+                {
+                    OutputChat.AppendText("ChakBot:\r\n >>> " +
+                    Calculate(tempText[historyIndex - 1].Substring(4, tempText[historyIndex - 1].Length - 4)) + "\r\n");
+                    TypingDisplay.Text = "";
+                }
+                else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "convert=")
+                {
+                    OutputChat.AppendText("ChakBot:\r\n >>> " +
+                    Convert(tempText[historyIndex - 1].Substring(8, tempText[historyIndex - 1].Length - 8)) + "\r\n");
+                    TypingDisplay.Text = "";
+                }
+                else
+                {
+                    OutputChat.AppendText("ChakBot:\r\n >>> " +
+                    "Please check your syntax." + "\r\n");
+                    TypingDisplay.Text = "";
+                }
             }
             else
             {
@@ -192,7 +228,7 @@ namespace ChakBot
             string sentence = rgx.Replace(feed, "").ToLower();
             string root;
             string cor;
-      
+
             // === Response Decider ===
             // First see if sentence exist, if not then decide by word
             foreach (string categ in categories.Keys)
@@ -216,7 +252,7 @@ namespace ChakBot
                 }
             }
 
-            return "Sorry, I did not learn how to answer that =[. Please type //Help";
+            return "Sorry, I did not learn how to answer that =[. Please type //help";
         }
 
         /// <summary>
@@ -334,18 +370,27 @@ namespace ChakBot
             read.Close();
         }
 
-        private string chakbot_en_de(string action, int shiftNumber, string message)
+        /// <summary>
+        /// Encrypt/Decrypt main program
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="shiftNumber"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private string chakbot_en_de(string message)
         {
             // Initializing variables
             string[] AlphabetsU = new[] { "L", "B", "W", "F", "P", "X", "G", "D", "I", "A", "K", "J", "M", "V", "O", "E", "Q", "S", "Z", "U", "R", "N", "C", "H", "Y", "T" };
             string[] AlphabetsL = new[] { "z", "v", "g", "f", "w", "d", "h", "o", "i", "j", "c", "l", "k", "n", "m", "p", "e", "r", "y", "t", "s", "x", "b", "q", "a", "u" };
             string[] Numbers = new[] { "5", "9", "7", "3", "1", "6", "4", "8", "0", "2" };
             string[] Signs = new[] { "!", ">", "{", "$", "%", "'", "(", "*", "&", ")", "-", "_", "=", "+", "#", "}", "?", "/", ">", "]", ";", ":", "~", "`", ",", ".", "<", "@", "^" };
-
+            string action = message.Substring(0, 1);
+            int shiftNumber = Int32.Parse(message.Substring(2, message.IndexOf('=') - 2));
+            string sentence = message.Substring(message.IndexOf("=") + 1, message.Length - message.IndexOf("=") - 1);
             string newText = "";
 
             // First encrytion/decrytion
-            foreach (char letter in message)
+            foreach (char letter in sentence)
             {
                 if (AlphabetsU.Contains(letter.ToString()) || AlphabetsL.Contains(letter.ToString()))
                 {
@@ -383,7 +428,7 @@ namespace ChakBot
         /// <param name="shiftType">Encrypt or decrypt</param>
         /// <param name="letterCase">Keeps the original casing</param>
         /// <returns>The new letter</returns>
-        private static string Shift(char letter, int shiftNumber, string action, string[] letterCase)
+        private string Shift(char letter, int shiftNumber, string action, string[] letterCase)
         {
             int index = Array.IndexOf(letterCase, letter.ToString());
             int newIndex = index + shiftNumber;
@@ -392,10 +437,7 @@ namespace ChakBot
             {
                 if (newIndex > letterCase.Count() - 1)
                 {
-                    while (newIndex > letterCase.Count() - 1)
-                    {
-                        newIndex = newIndex - (letterCase.Count());
-                    }
+                    newIndex = (index + shiftNumber) % letterCase.Count();
                 }
                 else
                 {
@@ -406,11 +448,7 @@ namespace ChakBot
             {
                 if ((index - shiftNumber) < 0)
                 {
-                    newIndex = (letterCase.Count()) + (index - shiftNumber);
-                    while (newIndex < 0)
-                    {
-                        newIndex = (letterCase.Count()) + newIndex;
-                    }
+                    newIndex = letterCase.Count() + ((index - shiftNumber) % letterCase.Count());
                 }
                 else
                 {
@@ -419,6 +457,77 @@ namespace ChakBot
             }
 
             return letterCase[newIndex];
+        }
+
+        /// <summary>
+        /// Morse Code Algo
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private string MorseCode(string message)
+        {
+            string converted_Message = "";
+            List<string> morse_Letters = new List<string>()
+                { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
+            List<string> morse_Codes = new List<string>()
+                { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..",
+            ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "-----" };
+
+            List<string> splitedList = message.Split(' ').ToList();
+
+            foreach (string element in splitedList)
+            {
+                // Morse Code
+                if (morse_Codes.Contains(element.ToString().ToUpper()))
+                {
+                    converted_Message += morse_Letters[morse_Codes.IndexOf(element.ToString().ToUpper())];
+                }
+                // Letters
+                else
+                {
+                    foreach (char character in element)
+                    {
+                        if (morse_Letters.Contains(character.ToString().ToUpper()))
+                        {
+                            converted_Message += morse_Codes[morse_Letters.IndexOf(character.ToString().ToUpper())] + " ";
+                        }
+                    }
+                    converted_Message += " ";
+                }
+            }
+
+            return converted_Message;
+        }
+
+        /// <summary>
+        /// Calculator Brain
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private string Calculate(string message)
+        {
+            return new DataTable().Compute(message, null).ToString();
+        }
+
+        private string Convert(string message)
+        {
+
+            int separator = message.IndexOfAny("abcdefghijklmnopqrstuvwxyz".ToCharArray());
+            double number = Double.Parse(message.Substring(0, separator));
+            string unit1 = message.Substring(separator, message.IndexOf(">") - separator);
+            string unit2 = message.Substring(message.IndexOf(">") + 1, message.Length - message.IndexOf(">") - 1);
+
+            return getValue(number, unit1, unit2);
+        }
+
+        private string getValue(double number, string unit1, string unit2)
+        {
+            double v1 = (double)this.GetType().GetField(unit1,
+                BindingFlags.NonPublic | BindingFlags.Instance).GetValue(this);
+            double v2 = (double)this.GetType().GetField(unit2,
+                BindingFlags.NonPublic | BindingFlags.Instance).GetValue(this);
+
+            return (number * (v2 / v1)).ToString();
         }
     }
 }
