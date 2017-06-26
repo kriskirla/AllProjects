@@ -1,6 +1,6 @@
 # AllProjects
 
-#Chakbot
+# Chakbot
 This is a program that you can have a chat with (how it began).
 
 Current features:
