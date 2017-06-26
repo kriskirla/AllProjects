@@ -99,9 +99,9 @@ namespace ChakBot
             this.TypingDisplay.BackColor = System.Drawing.Color.Black;
             this.TypingDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TypingDisplay.ForeColor = System.Drawing.Color.White;
-            this.TypingDisplay.Location = new System.Drawing.Point(16, 433);
+            this.TypingDisplay.Location = new System.Drawing.Point(15, 436);
             this.TypingDisplay.Name = "TypingDisplay";
-            this.TypingDisplay.Size = new System.Drawing.Size(159, 13);
+            this.TypingDisplay.Size = new System.Drawing.Size(300, 13);
             this.TypingDisplay.TabIndex = 7;
             // 
             // SaveButton
