@@ -9,6 +9,7 @@ Current features:
 - Translate Morse Code
 - Calculate
 - Unit Conversion
+- Tell time
 
 This is still in progress, so if you want to play with it, head to the debug file inside of Chakbot and run the execution.
 
