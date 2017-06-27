@@ -1,4 +1,4 @@
-greetings;greetings=sup;hey;hello;hi
+greetings;greetings=sup;hey;hello;hi;yo;hiii
 rjokes;jokes=tell me a joke;tell me a funny joke;tell me something funny
 jokes=You're beautiful;I am a chalkboard;I am so funny
 rfacts;facts=tell me something interesting
@@ -7,7 +7,18 @@ rage;age=how old are you
 age=I am 0
 rname;name=whats your name
 name=I am Chakbot
-gquestions;ganswer=whats up
-ganswers=Talking with you;Talking with you right now;Nothing much;nothing special
+ganswers=Nothing much;nothing special
 gquestions;ganswers=whats up;how are you;whats new
 salute;salute=bye;c u;bye bye;see u;later;take care;peace;see you;bye =]
+rty;ty=thank you;thanks;thanks chakbot
+ty=You're Welcome!;No worries!;Anytime =]
+testing;rtesting=testing
+rtesting=I am alive
+rfunctionalities;functionalities=what can you do;what are you good at
+functionalities=Check //help for the list of functionalities;You can see that through //help
+rcreation;acreation=who created you;who made you;who made this program
+acreation=Kris Lai, a 4th year university student at UofT;Kris Lai, student at UofT;Kris Lai, a student interested in AI
+rbored;bored=bored;i am bored;i am so bored;so bored;but i am so bored
+bored=You can teach me things meanwhile =];You have me to talk to;This is why I am here;aww you can talk with me;Have a chat with me
+ramaze;amaze=wow;youre so cool
+amaze=I know right;Amazing right

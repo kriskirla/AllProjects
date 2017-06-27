@@ -15,6 +15,8 @@ namespace ChakBot
 {
     public partial class Form1 : Form
     {
+        // ============================ Initilization ================================
+
         List<string> tempText = new List<string>() { };
         int historyIndex = 0;
         int prevIndex = 0;
@@ -66,8 +68,106 @@ namespace ChakBot
             file.Close();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        // ============================ End Initialization ================================
+
+        // ============================ UI Features ================================
+        private void HelpMenu_Click(object sender, EventArgs e)
         {
+            InputChat.Text = "//help";
+            SendKeys.Send("{ENTER}");
+        }
+
+        private void ClearScreen_Click(object sender, EventArgs e)
+        {
+            InputChat.Text = "//clear";
+            SendKeys.Send("{ENTER}");
+        }
+
+        private void DisplayTime_Click(object sender, EventArgs e)
+        {
+            InputChat.Text = "//time";
+            SendKeys.Send("{ENTER}");
+        }
+
+        private void Calculator_Click(object sender, EventArgs e)
+        {
+            InputChat.Text = "cal=";
+            InputChat.SelectionStart = InputChat.Text.Length;
+        }
+
+        private void UnitConverter_Click(object sender, EventArgs e)
+        {
+            InputChat.Text = "convert=";
+            InputChat.SelectionStart = InputChat.Text.Length;
+        }
+
+        private void TeachChakbot_Click(object sender, EventArgs e)
+        {
+            InputChat.Text = "teach=";
+            InputChat.SelectionStart = InputChat.Text.Length;
+        }
+
+        private void Encrypt_Click(object sender, EventArgs e)
+        {
+            InputChat.Text = "e;" + rnd.Next(1, 25) + "=";
+            InputChat.SelectionStart = InputChat.Text.Length;
+        }
+
+        private void Decrypt_Click(object sender, EventArgs e)
+        {
+            InputChat.Text = "d;=";
+            InputChat.SelectionStart = InputChat.Text.Length;
+        }
+
+        private void TranslateMorse_Click(object sender, EventArgs e)
+        {
+            InputChat.Text = "mc=";
+            InputChat.SelectionStart = InputChat.Text.Length;
+        }
+
+        private void BarHelp_Click(object sender, EventArgs e)
+        {
+            HelpMenu_Click(sender, e);
+        }
+
+        private void BarClear_Click(object sender, EventArgs e)
+        {
+            ClearScreen_Click(sender, e);
+        }
+
+        private void BarCalc_Click(object sender, EventArgs e)
+        {
+            Calculator_Click(sender, e);
+        }
+
+        private void BarConv_Click(object sender, EventArgs e)
+        {
+            UnitConverter_Click(sender, e);
+        }
+
+        private void BarTeach_Click(object sender, EventArgs e)
+        {
+            TeachChakbot_Click(sender, e);
+        }
+
+        private void BarEn_Click(object sender, EventArgs e)
+        {
+            Encrypt_Click(sender, e);
+        }
+
+        private void BarDe_Click(object sender, EventArgs e)
+        {
+            Decrypt_Click(sender, e);
+        }
+
+        private void BarMorse_Click(object sender, EventArgs e)
+        {
+            TranslateMorse_Click(sender, e);
+        }
+
+        private void BarDisplayTime_Click(object sender, EventArgs e)
+        {
+            DisplayTime_Click(sender, e);
         }
 
         private void OutputChat_TextChanged(object sender, EventArgs e)
@@ -109,38 +209,69 @@ namespace ChakBot
             ChakBot_Convo();
         }
 
+        // ============================ END UI Features ================================
+
+
+        // ============================ Chakbot Settings ================================
         /// <summary>
         /// Robot Response
         /// </summary>
         private async void ChakBot_Convo()
         {
             // Delay for aesthetics
-            for (int i = 0; i < rnd.Next(1, 3); i++)
+            for (int i = 0; i < rnd.Next(1, 2); i++)
             {
                 TypingDisplay.Text = "ChakBot is typing.";
-                await Task.Delay(500);
+                await Task.Delay(400);
                 TypingDisplay.Text = "ChakBot is typing..";
-                await Task.Delay(500);
+                await Task.Delay(400);
                 TypingDisplay.Text = "ChakBot is typing...";
-                await Task.Delay(500);
+                await Task.Delay(400);
             }
 
             if (tempText[historyIndex - 1] == "//help")
             {
                 OutputChat.AppendText("ChakBot:\r\n >>> " +
                     "List of functions\r\n" +
-                    "//clear >> clear the messages on screen\r\n" +
-                    "teach= >> teach chakbot (root;corres>message>corres>message)\r\n" +
-                    "e;n= >> encrypt by shifting n times\r\n" +
-                    "d;n= >> decrypt by shifting n times\r\n" +
-                    "morse= >> encrypr/decrypt message into morse code\r\n" + 
-                    "cal= >> calculate\r\n" + 
-                    "convert= >> Convert units (#unit>to unit\r\n");
+                    "====================================================\r\n" +
+                    "//clear\t| Clear the messages on screen\r\n" +
+                    "//time\t| Display the current time\r\n" +
+                    "teach=\t| Teach chakbot (root>message>corres>message)\r\n" +
+                    "e;n=\t| Encrypt by shifting n times\r\n" +
+                    "d;n=\t| Decrypt by shifting n times\r\n" +
+                    "morse=\t| Encrypr/decrypt message into morse code\r\n" + 
+                    "cal=\t| Calculate\r\n" + 
+                    "convert=\t| Convert units (#unit>unit)\r\n" +
+                    "====================================================\r\n");
                 TypingDisplay.Text = "";
             }
             else if (tempText[historyIndex - 1] == "//clear")
             {
                 OutputChat.Clear();
+                TypingDisplay.Text = "";
+            }
+            else if (tempText[historyIndex - 1] == "//time")
+            {
+                OutputChat.AppendText("ChakBot:\r\n >>> " +
+                DateTime.Now.ToString() + " EST\r\n");
+                TypingDisplay.Text = "";
+            }
+            else if (tempText[historyIndex - 1] == "//brain")
+            {
+                System.IO.StreamReader read = new System.IO.StreamReader(PATH);
+
+                // Read line and put into list
+                string line;
+                string message = "";
+
+                while ((line = read.ReadLine()) != null)
+                {
+                    message += line + "\r\n";
+                    message += "---\r\n";
+                }
+
+                read.Close();
+                OutputChat.AppendText(message + "\r\n");
                 TypingDisplay.Text = "";
             }
             else if (tempText[historyIndex - 1].Contains("="))
@@ -203,6 +334,7 @@ namespace ChakBot
                 {
                     InputChat.Text = tempText[prevIndex - 1];
                     if (prevIndex != 0) { prevIndex--; }
+                    InputChat.SelectionStart = InputChat.Text.Length;
                 }
             }
 
@@ -212,6 +344,7 @@ namespace ChakBot
                 {
                     InputChat.Text = tempText[prevIndex + 1];
                     if (prevIndex != historyIndex - 1) { prevIndex++; }
+                    InputChat.SelectionStart = InputChat.Text.Length;
                 }
             }
         }
@@ -254,7 +387,10 @@ namespace ChakBot
 
             return "Sorry, I did not learn how to answer that =[. Please type //help";
         }
+        // ============================ End Chakbot Settings ================================
 
+
+        // ============================ Chakbot Features ================================
         /// <summary>
         /// Adding info to ckabot's brain
         /// </summary>
@@ -363,7 +499,6 @@ namespace ChakBot
                 categ = line.Substring(0, line.IndexOf("="));
                 content = line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
                 categories[categ] = content;
-                //categories.Add(categ, content);
                 counter++;
             }
 
@@ -506,7 +641,14 @@ namespace ChakBot
         /// <returns></returns>
         private string Calculate(string message)
         {
-            return new DataTable().Compute(message, null).ToString();
+            if (message.Any(x => char.IsLetter(x)))
+            {
+                return "Please check your syntax";
+            }
+            else
+            {
+                return new DataTable().Compute(message, null).ToString();
+            }
         }
 
         private string Convert(string message)
@@ -529,5 +671,7 @@ namespace ChakBot
 
             return (number * (v2 / v1)).ToString();
         }
+
+        // ============================ End Chakbot Features ================================
     }
 }
