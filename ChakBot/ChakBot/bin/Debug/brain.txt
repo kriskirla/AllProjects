@@ -1,4 +1,4 @@
-greetings;greetings=sup;hey;hello;hi;yo;hiii;heyy;helloo;hey whats up
+greetings;greetings=sup;hey;hello;hi;yo;hiii;heyy;helloo;hey whats up;chakbot;sawp
 rjokes;jokes=tell me a joke;tell me a funny joke;tell me something funny
 jokes=You're beautiful;I am a chalkboard;I am so funny
 rfacts;facts=tell me something interesting

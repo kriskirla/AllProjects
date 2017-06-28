@@ -62,9 +62,11 @@ namespace ChakBot
             this.BarDe = new System.Windows.Forms.ToolStripMenuItem();
             this.BarMorse = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.themesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.ThemeDark = new System.Windows.Forms.ToolStripMenuItem();
             this.ThemeLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.CuteTheme = new System.Windows.Forms.ToolStripMenuItem();
+            this.AutumnTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClick.SuspendLayout();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
@@ -362,35 +364,57 @@ namespace ChakBot
             // MenuSettings
             // 
             this.MenuSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.themesToolStripMenuItem});
+            this.MenuTheme});
             this.MenuSettings.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuSettings.ForeColor = System.Drawing.Color.LightCyan;
             this.MenuSettings.Name = "MenuSettings";
             this.MenuSettings.Size = new System.Drawing.Size(65, 20);
             this.MenuSettings.Text = "Settings";
             // 
-            // themesToolStripMenuItem
+            // MenuTheme
             // 
-            this.themesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuTheme.BackColor = System.Drawing.Color.LightCyan;
+            this.MenuTheme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ThemeDark,
-            this.ThemeLight});
-            this.themesToolStripMenuItem.Name = "themesToolStripMenuItem";
-            this.themesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.themesToolStripMenuItem.Text = "Themes";
+            this.ThemeLight,
+            this.CuteTheme,
+            this.AutumnTheme});
+            this.MenuTheme.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuTheme.Name = "MenuTheme";
+            this.MenuTheme.Size = new System.Drawing.Size(152, 22);
+            this.MenuTheme.Text = "Themes";
             // 
             // ThemeDark
             // 
+            this.ThemeDark.BackColor = System.Drawing.Color.LightCyan;
             this.ThemeDark.Name = "ThemeDark";
-            this.ThemeDark.Size = new System.Drawing.Size(152, 22);
+            this.ThemeDark.Size = new System.Drawing.Size(158, 22);
             this.ThemeDark.Text = "Dark Theme";
             this.ThemeDark.Click += new System.EventHandler(this.ThemeDark_Click);
             // 
             // ThemeLight
             // 
+            this.ThemeLight.BackColor = System.Drawing.Color.LightCyan;
             this.ThemeLight.Name = "ThemeLight";
-            this.ThemeLight.Size = new System.Drawing.Size(152, 22);
+            this.ThemeLight.Size = new System.Drawing.Size(158, 22);
             this.ThemeLight.Text = "Light Theme";
             this.ThemeLight.Click += new System.EventHandler(this.ThemeLight_Click);
+            // 
+            // CuteTheme
+            // 
+            this.CuteTheme.BackColor = System.Drawing.Color.LightCyan;
+            this.CuteTheme.Name = "CuteTheme";
+            this.CuteTheme.Size = new System.Drawing.Size(158, 22);
+            this.CuteTheme.Text = "Cute Theme";
+            this.CuteTheme.Click += new System.EventHandler(this.CuteTheme_Click);
+            // 
+            // AutumnTheme
+            // 
+            this.AutumnTheme.BackColor = System.Drawing.Color.LightCyan;
+            this.AutumnTheme.Name = "AutumnTheme";
+            this.AutumnTheme.Size = new System.Drawing.Size(158, 22);
+            this.AutumnTheme.Text = "Autumn Theme";
+            this.AutumnTheme.Click += new System.EventHandler(this.AutumnTheme_Click);
             // 
             // Form1
             // 
@@ -452,9 +476,11 @@ namespace ChakBot
         private System.Windows.Forms.ToolStripMenuItem DisplayTime;
         private System.Windows.Forms.ToolStripMenuItem BarDisplayTime;
         private System.Windows.Forms.ToolStripMenuItem MenuSettings;
-        private System.Windows.Forms.ToolStripMenuItem themesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuTheme;
         private System.Windows.Forms.ToolStripMenuItem ThemeDark;
         private System.Windows.Forms.ToolStripMenuItem ThemeLight;
+        private System.Windows.Forms.ToolStripMenuItem CuteTheme;
+        private System.Windows.Forms.ToolStripMenuItem AutumnTheme;
     }
 }
 
