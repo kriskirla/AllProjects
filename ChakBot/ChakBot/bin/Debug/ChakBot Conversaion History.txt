@@ -1,13 +1,9 @@
 User:
- >>> Hello
+ >>> testing
 ChakBot:
- >>> greetings
+ >>> i am alive
 User:
- >>> how are you
+ >>> hello
 ChakBot:
- >>> Not bad
-User:
- >>> nice
-ChakBot:
- >>> Sorry, I did not learn how to answer that =[
+ >>> hi
 

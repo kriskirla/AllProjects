@@ -46,21 +46,25 @@ namespace ChakBot
             this.TranslateMorse = new System.Windows.Forms.ToolStripMenuItem();
             this.InputChat = new System.Windows.Forms.RichTextBox();
             this.Enter = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.CopyRight2 = new System.Windows.Forms.Label();
+            this.CopyRight1 = new System.Windows.Forms.Label();
             this.TypingDisplay = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.MenuShortcuts = new System.Windows.Forms.ToolStripMenuItem();
             this.BarHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.BarClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.BarDisplayTime = new System.Windows.Forms.ToolStripMenuItem();
             this.BarCalc = new System.Windows.Forms.ToolStripMenuItem();
             this.BarConv = new System.Windows.Forms.ToolStripMenuItem();
             this.BarTeach = new System.Windows.Forms.ToolStripMenuItem();
             this.BarEn = new System.Windows.Forms.ToolStripMenuItem();
             this.BarDe = new System.Windows.Forms.ToolStripMenuItem();
             this.BarMorse = new System.Windows.Forms.ToolStripMenuItem();
-            this.BarDisplayTime = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.themesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ThemeDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.ThemeLight = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClick.SuspendLayout();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
@@ -201,25 +205,25 @@ namespace ChakBot
             this.Enter.UseVisualStyleBackColor = false;
             this.Enter.Click += new System.EventHandler(this.Enter_Click);
             // 
-            // label2
+            // CopyRight2
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(2, 536);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "All Rights Reserved";
+            this.CopyRight2.AutoSize = true;
+            this.CopyRight2.ForeColor = System.Drawing.Color.White;
+            this.CopyRight2.Location = new System.Drawing.Point(2, 536);
+            this.CopyRight2.Name = "CopyRight2";
+            this.CopyRight2.Size = new System.Drawing.Size(100, 13);
+            this.CopyRight2.TabIndex = 5;
+            this.CopyRight2.Text = "All Rights Reserved";
             // 
-            // label3
+            // CopyRight1
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(2, 523);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Copyright (c) 2017 Kris Lai";
+            this.CopyRight1.AutoSize = true;
+            this.CopyRight1.ForeColor = System.Drawing.Color.White;
+            this.CopyRight1.Location = new System.Drawing.Point(2, 523);
+            this.CopyRight1.Name = "CopyRight1";
+            this.CopyRight1.Size = new System.Drawing.Size(130, 13);
+            this.CopyRight1.TabIndex = 4;
+            this.CopyRight1.Text = "Copyright (c) 2017 Kris Lai";
             // 
             // TypingDisplay
             // 
@@ -228,6 +232,7 @@ namespace ChakBot
             this.TypingDisplay.ForeColor = System.Drawing.Color.White;
             this.TypingDisplay.Location = new System.Drawing.Point(7, 439);
             this.TypingDisplay.Name = "TypingDisplay";
+            this.TypingDisplay.ReadOnly = true;
             this.TypingDisplay.Size = new System.Drawing.Size(316, 13);
             this.TypingDisplay.TabIndex = 7;
             // 
@@ -247,7 +252,8 @@ namespace ChakBot
             // 
             this.Menu.BackColor = System.Drawing.Color.SlateGray;
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuShortcuts});
+            this.MenuShortcuts,
+            this.MenuSettings});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
             this.Menu.Size = new System.Drawing.Size(345, 24);
@@ -259,13 +265,13 @@ namespace ChakBot
             this.MenuShortcuts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BarHelp,
             this.BarClear,
+            this.BarDisplayTime,
             this.BarCalc,
             this.BarConv,
             this.BarTeach,
             this.BarEn,
             this.BarDe,
-            this.BarMorse,
-            this.BarDisplayTime});
+            this.BarMorse});
             this.MenuShortcuts.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuShortcuts.ForeColor = System.Drawing.Color.LightCyan;
             this.MenuShortcuts.Name = "MenuShortcuts";
@@ -289,6 +295,15 @@ namespace ChakBot
             this.BarClear.Size = new System.Drawing.Size(189, 22);
             this.BarClear.Text = "Clear Screen";
             this.BarClear.Click += new System.EventHandler(this.BarClear_Click);
+            // 
+            // BarDisplayTime
+            // 
+            this.BarDisplayTime.BackColor = System.Drawing.Color.LightCyan;
+            this.BarDisplayTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BarDisplayTime.Name = "BarDisplayTime";
+            this.BarDisplayTime.Size = new System.Drawing.Size(189, 22);
+            this.BarDisplayTime.Text = "Display Time";
+            this.BarDisplayTime.Click += new System.EventHandler(this.BarDisplayTime_Click);
             // 
             // BarCalc
             // 
@@ -344,14 +359,38 @@ namespace ChakBot
             this.BarMorse.Text = "Translate Morse Code";
             this.BarMorse.Click += new System.EventHandler(this.BarMorse_Click);
             // 
-            // BarDisplayTime
+            // MenuSettings
             // 
-            this.BarDisplayTime.BackColor = System.Drawing.Color.LightCyan;
-            this.BarDisplayTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BarDisplayTime.Name = "BarDisplayTime";
-            this.BarDisplayTime.Size = new System.Drawing.Size(189, 22);
-            this.BarDisplayTime.Text = "Display Time";
-            this.BarDisplayTime.Click += new System.EventHandler(this.BarDisplayTime_Click);
+            this.MenuSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.themesToolStripMenuItem});
+            this.MenuSettings.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuSettings.ForeColor = System.Drawing.Color.LightCyan;
+            this.MenuSettings.Name = "MenuSettings";
+            this.MenuSettings.Size = new System.Drawing.Size(65, 20);
+            this.MenuSettings.Text = "Settings";
+            // 
+            // themesToolStripMenuItem
+            // 
+            this.themesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ThemeDark,
+            this.ThemeLight});
+            this.themesToolStripMenuItem.Name = "themesToolStripMenuItem";
+            this.themesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.themesToolStripMenuItem.Text = "Themes";
+            // 
+            // ThemeDark
+            // 
+            this.ThemeDark.Name = "ThemeDark";
+            this.ThemeDark.Size = new System.Drawing.Size(152, 22);
+            this.ThemeDark.Text = "Dark Theme";
+            this.ThemeDark.Click += new System.EventHandler(this.ThemeDark_Click);
+            // 
+            // ThemeLight
+            // 
+            this.ThemeLight.Name = "ThemeLight";
+            this.ThemeLight.Size = new System.Drawing.Size(152, 22);
+            this.ThemeLight.Text = "Light Theme";
+            this.ThemeLight.Click += new System.EventHandler(this.ThemeLight_Click);
             // 
             // Form1
             // 
@@ -363,8 +402,8 @@ namespace ChakBot
             this.Controls.Add(this.Menu);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.TypingDisplay);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.CopyRight2);
+            this.Controls.Add(this.CopyRight1);
             this.Controls.Add(this.Enter);
             this.Controls.Add(this.InputChat);
             this.Controls.Add(this.OutputChat);
@@ -385,9 +424,9 @@ namespace ChakBot
 
         private System.Windows.Forms.RichTextBox OutputChat;
         private System.Windows.Forms.RichTextBox InputChat;
-        private System.Windows.Forms.Button Enter;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private new System.Windows.Forms.Button Enter;
+        private System.Windows.Forms.Label CopyRight2;
+        private System.Windows.Forms.Label CopyRight1;
         private System.Windows.Forms.TextBox TypingDisplay;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.ContextMenuStrip RightClick;
@@ -400,7 +439,7 @@ namespace ChakBot
         private System.Windows.Forms.ToolStripMenuItem TranslateMorse;
         private System.Windows.Forms.ToolStripMenuItem HelpMenu;
         private System.Windows.Forms.ToolStripMenuItem ClearScreen;
-        private System.Windows.Forms.MenuStrip Menu;
+        private new System.Windows.Forms.MenuStrip Menu;
         private System.Windows.Forms.ToolStripMenuItem MenuShortcuts;
         private System.Windows.Forms.ToolStripMenuItem BarHelp;
         private System.Windows.Forms.ToolStripMenuItem BarClear;
@@ -412,6 +451,10 @@ namespace ChakBot
         private System.Windows.Forms.ToolStripMenuItem BarMorse;
         private System.Windows.Forms.ToolStripMenuItem DisplayTime;
         private System.Windows.Forms.ToolStripMenuItem BarDisplayTime;
+        private System.Windows.Forms.ToolStripMenuItem MenuSettings;
+        private System.Windows.Forms.ToolStripMenuItem themesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ThemeDark;
+        private System.Windows.Forms.ToolStripMenuItem ThemeLight;
     }
 }
 
