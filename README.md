@@ -25,5 +25,6 @@ Good to haves:
 - brain.txt
 - config.txt
 
-If you start Chakbot without brain.txt, then Chakbot will not know how to answer anything (You will have to teach Chakbot from scratch.
+If you start Chakbot without brain.txt, then Chakbot will not know how to answer anything (You will have to teach Chakbot from scratch.)
+
 config.txt is only there to store personal preferences
