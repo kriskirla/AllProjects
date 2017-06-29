@@ -20,5 +20,10 @@ This is still in progress, so if you want to play with it, head to the debug fil
 
 Nessessary Files:
 - Chakbot.exe
+
+Good to haves:
 - brain.txt
 - config.txt
+
+If you start Chakbot without brain.txt, then Chakbot will not know how to answer anything (You will have to teach Chakbot from scratch.
+config.txt is only there to store personal preferences
