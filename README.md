@@ -11,8 +11,12 @@ Current features:
 - Unit Conversion
 - Tell time
 
+UI Features:
+- Different Themes
+
 This is still in progress, so if you want to play with it, head to the debug file inside of Chakbot and run the execution.
 
 Nessessary Files:
 - Chakbot.exe
 - brain.txt
+- config.txt
