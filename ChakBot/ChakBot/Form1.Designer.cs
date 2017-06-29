@@ -250,14 +250,14 @@ namespace ChakBot
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // Menu
+            // MenuStrip
             // 
             this.MenuStrip.BackColor = System.Drawing.Color.SlateGray;
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuShortcuts,
             this.MenuSettings});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip.Name = "Menu";
+            this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(345, 24);
             this.MenuStrip.TabIndex = 11;
             this.MenuStrip.Text = "menuStrip1";
