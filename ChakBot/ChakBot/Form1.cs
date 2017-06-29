@@ -23,6 +23,9 @@ namespace ChakBot
         Random rnd = new Random();
         string PATH = System.IO.Directory.GetCurrentDirectory();
 
+        // Default Chat Separator
+        string SEP = "\r\n--------------------------------------------------------------------------------------------------------\r\n";
+
         // Default Theme
         string THEME = "dark";
 
@@ -88,12 +91,16 @@ namespace ChakBot
         public Form1()
         {
             InitializeComponent();
+            this.CenterToScreen();
             this.AcceptButton = Enter;
             this.ActiveControl = InputChat;
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
 
             read_brain(PATH + "/brain.txt");
             read_config(PATH + "/config.txt");
+
+            OutputChat.Text = "====================================================\r\n" +
+                "Chakbot: (v ^ O ^ )> Hello! My name is Chakbot!\r\n====================================================\r\n";
         }
 
         private void read_brain(string path)
@@ -111,12 +118,11 @@ namespace ChakBot
             string line;
             string categ;
             List<string> content;
-            Regex rgx = new Regex("[^a-zA-Z0-9 -]");
 
             while ((line = file.ReadLine()) != null)
             {
                 categ = line.Substring(0, line.IndexOf("="));
-                content = rgx.Replace(line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1), "").Split(';').ToList();
+                content = line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
                 categories[categ] = content;
             }
 
@@ -340,7 +346,8 @@ namespace ChakBot
         private void Enter_Click(object sender, EventArgs e)
         {
             // Output user message
-            OutputChat.AppendText("User:\r\n >>> " + InputChat.Text + "\r\n");
+            OutputChat.AppendText("User: " + InputChat.Text + "\r\n" +
+                "--------------------------------------------------------------------------------------------------------\r\n");
 
             // Add convo to history
             tempText.Add(InputChat.Text);
@@ -378,7 +385,7 @@ namespace ChakBot
 
             if (tempText[historyIndex - 1] == "//help")
             {
-                OutputChat.AppendText("ChakBot:\r\n >>> " +
+                OutputChat.AppendText("ChakBot: " +
                     "List of functions\r\n" +
                     "====================================================\r\n" +
                     "//clear\t| Clear the messages on screen\r\n" +
@@ -425,45 +432,47 @@ namespace ChakBot
             {
                 if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "teach=")
                 {
+                    OutputChat.AppendText("ChakBot: " +
                     teach_chakbot(tempText[historyIndex - 1].Substring(6,
-                        tempText[historyIndex - 1].Length - 6));
+                        tempText[historyIndex - 1].Length - 6), PATH + "/brain.txt") + SEP);
+                    TypingDisplay.Text = "";
                 }
                 else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf(';') + 1).ToLower() == "e;" ||
                     tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf(';') + 1).ToLower() == "d;")
                 {
-                    OutputChat.AppendText("ChakBot:\r\n >>> " +
-                        chakbot_en_de(tempText[historyIndex - 1]) + "\r\n");
+                    OutputChat.AppendText("ChakBot: " +
+                        chakbot_en_de(tempText[historyIndex - 1]) + SEP);
                     TypingDisplay.Text = "";
                 }
                 else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "mc=")
                 {
-                    OutputChat.AppendText("ChakBot:\r\n >>> " +
-                    MorseCode(tempText[historyIndex - 1].Substring(3, tempText[historyIndex - 1].Length - 3)) + "\r\n");
+                    OutputChat.AppendText("ChakBot: " +
+                    MorseCode(tempText[historyIndex - 1].Substring(3, tempText[historyIndex - 1].Length - 3)) + SEP);
                     TypingDisplay.Text = "";
                 }
                 else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "cal=")
                 {
-                    OutputChat.AppendText("ChakBot:\r\n >>> " +
-                    Calculate(tempText[historyIndex - 1].Substring(4, tempText[historyIndex - 1].Length - 4)) + "\r\n");
+                    OutputChat.AppendText("ChakBot: " +
+                    Calculate(tempText[historyIndex - 1].Substring(4, tempText[historyIndex - 1].Length - 4)) + SEP);
                     TypingDisplay.Text = "";
                 }
                 else if (tempText[historyIndex - 1].Substring(0, tempText[historyIndex - 1].IndexOf('=') + 1).ToLower() == "convert=")
                 {
-                    OutputChat.AppendText("ChakBot:\r\n >>> " +
-                    Convert(tempText[historyIndex - 1].Substring(8, tempText[historyIndex - 1].Length - 8)) + "\r\n");
+                    OutputChat.AppendText("ChakBot: " +
+                    Convert(tempText[historyIndex - 1].Substring(8, tempText[historyIndex - 1].Length - 8)) + SEP);
                     TypingDisplay.Text = "";
                 }
                 else
                 {
-                    OutputChat.AppendText("ChakBot:\r\n >>> " +
-                    "Please check your syntax." + "\r\n");
+                    OutputChat.AppendText("ChakBot: " +
+                    "Please check your syntax." + SEP);
                     TypingDisplay.Text = "";
                 }
             }
             else
             {
-                OutputChat.AppendText("ChakBot:\r\n >>> " +
-                    getMessage(tempText[historyIndex - 1]) + "\r\n");
+                OutputChat.AppendText("ChakBot: " +
+                    getMessage(tempText[historyIndex - 1]) + SEP);
                 TypingDisplay.Text = "";
             }
         }
@@ -532,7 +541,12 @@ namespace ChakBot
                 }
             }
 
-            return "Sorry, I did not learn how to answer that =[\r\n >>> Please type //help or right click to show help in shortcut menu.\r\n";
+            // If brain doesn't know how to answer, guess a random reply LOL
+            string randomCateg = categories.Keys.ToList()[rnd.Next(0, categories.Keys.Count() - 1)];
+            int randomContent = rnd.Next(0, categories[randomCateg].Count() - 1);
+            string guess = categories[randomCateg][randomContent];
+
+            return guess + "...\r\nChakBot: u( T ^ T )u I probably didn't answer that correctly. Please teach me if that is so (Check //help)";
         }
         // ============================ End Chakbot Settings ================================
 
@@ -541,7 +555,7 @@ namespace ChakBot
         /// <summary>
         /// Adding info to ckabot's brain
         /// </summary>
-        private void teach_chakbot(string learn)
+        private string teach_chakbot(string learn, string path)
         {
             // Format of teaching
             // categ>question>response
@@ -552,9 +566,7 @@ namespace ChakBot
                 // Check format
                 if (disect[0] == "" || disect[1] == "" || disect[2] == "" || disect[3] == "")
                 {
-                    OutputChat.AppendText("ChakBot:\r\n >>> " +
-                        "Please enter the correct format: teach=categ;corres>question>Rcateg>reponse" + "\r\n");
-                    TypingDisplay.Text = "";
+                    return "Please enter the correct format: teach=categ;corres>question>Rcateg>reponse";
                 }
                 else
                 {
@@ -563,7 +575,7 @@ namespace ChakBot
                     {
                         var text = new StringBuilder();
 
-                        foreach (string s in System.IO.File.ReadAllLines(PATH))
+                        foreach (string s in System.IO.File.ReadAllLines(path))
                         {
                             // Check if category is request
                             if (s.Substring(0, s.IndexOf("=")) == disect[0] + ";" + disect[2])
@@ -584,7 +596,7 @@ namespace ChakBot
                             }
                         }
 
-                        using (var file = new System.IO.StreamWriter(PATH))
+                        using (var file = new System.IO.StreamWriter(path))
                         {
                             file.Write(text.ToString());
                             file.Close();
@@ -595,12 +607,12 @@ namespace ChakBot
                     {
                         if (disect[0] != disect[2])
                         {
-                            System.IO.File.AppendAllText(PATH,
+                            System.IO.File.AppendAllText(path,
                                 disect[0] + ";" + disect[2] + "=" + disect[1] + Environment.NewLine);
                         }
                         else
                         {
-                            System.IO.File.AppendAllText(PATH,
+                            System.IO.File.AppendAllText(path,
                                 disect[0] + ";" + disect[2] + "=" + disect[1] + disect[3] + Environment.NewLine);
                         }
                     }
@@ -612,7 +624,7 @@ namespace ChakBot
                         {
                             var text = new StringBuilder();
 
-                            foreach (string s in System.IO.File.ReadAllLines(PATH))
+                            foreach (string s in System.IO.File.ReadAllLines(path))
                             {
                                 if (s.Substring(0, s.IndexOf("=")) == disect[2])
                                 {
@@ -624,7 +636,7 @@ namespace ChakBot
                                 }
                             }
 
-                            using (var file = new System.IO.StreamWriter(PATH))
+                            using (var file = new System.IO.StreamWriter(path))
                             {
                                 file.Write(text.ToString());
                                 file.Close();
@@ -633,43 +645,39 @@ namespace ChakBot
                         // Otherwise
                         else
                         {
-                            System.IO.File.AppendAllText(PATH,
+                            System.IO.File.AppendAllText(path,
                                     disect[2] + "=" + disect[3] + Environment.NewLine);
                         }
                     }
 
-                    OutputChat.AppendText("ChakBot:\r\n >>> " +
-                            "Thanks! I learned it! =D" + "\r\n");
-                    TypingDisplay.Text = "";
+                    // Reread content
+                    categories.Clear();
+
+                    System.IO.StreamReader read = new System.IO.StreamReader(PATH + "/brain.txt");
+
+                    // Read line and put into list
+                    string line;
+                    int counter = 0;
+                    string categ;
+                    List<string> content;
+
+                    while ((line = read.ReadLine()) != null)
+                    {
+                        categ = line.Substring(0, line.IndexOf("="));
+                        content = line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
+                        categories[categ] = content;
+                        counter++;
+                    }
+
+                    read.Close();
+
+                    return "Thanks! I learned it! =D";
                 }
             }
             catch
             {
-                OutputChat.AppendText("ChakBot:\r\n >>> " +
-                            "Please check that you included all information." + "\r\n");
-                TypingDisplay.Text = "";
+                return "Please check that you included all information.";
             }
-
-            // Reread content
-            categories.Clear();
-
-            System.IO.StreamReader read = new System.IO.StreamReader(PATH);
-
-            // Read line and put into list
-            string line;
-            int counter = 0;
-            string categ;
-            List<string> content;
-
-            while ((line = read.ReadLine()) != null)
-            {
-                categ = line.Substring(0, line.IndexOf("="));
-                content = line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
-                categories[categ] = content;
-                counter++;
-            }
-
-            read.Close();
         }
 
         /// <summary>
@@ -854,8 +862,10 @@ namespace ChakBot
         // ============================ End Chakbot Features ================================
 
         // ============================ Themes ================================
-        private void changeTheme(Color Frame, Color Text, Color ChatFrame, Color ChatText, Color MenuTitle, Color MenuFrame, Color MenuText)
+        private void changeTheme(string name, Color Frame, Color Text, Color ChatFrame, Color ChatText, Color MenuTitle, Color MenuFrame, Color MenuText)
         {
+            THEME = name;
+
             // Frame
             this.BackColor = Frame;
             CopyRight1.BackColor = Frame;
@@ -908,26 +918,22 @@ namespace ChakBot
 
         private void ThemeDark_Click(object sender, EventArgs e)
         {
-            changeTheme(Color.SlateGray, Color.White, Color.Black, Color.White, Color.LightCyan, Color.LightCyan, Color.Black);
-            THEME = "dark";
+            changeTheme("dark", Color.SlateGray, Color.White, Color.Black, Color.White, Color.LightCyan, Color.LightCyan, Color.Black);
         }
 
         private void ThemeLight_Click(object sender, EventArgs e)
         {
-            changeTheme(Color.Gainsboro, Color.Black, Color.FloralWhite, Color.Black, Color.Black, Color.Gainsboro, Color.Black);
-            THEME = "light";
+            changeTheme("light", Color.Gainsboro, Color.Black, Color.FloralWhite, Color.Black, Color.Black, Color.Gainsboro, Color.Black);
         }
 
         private void CuteTheme_Click(object sender, EventArgs e)
         {
-            changeTheme(Color.Thistle, Color.DarkMagenta, Color.LightPink, Color.Purple, Color.DarkMagenta, Color.Thistle, Color.Black);
-            THEME = "cute";
+            changeTheme("cute", Color.Thistle, Color.DarkMagenta, Color.LightPink, Color.Purple, Color.DarkMagenta, Color.Thistle, Color.Black);
         }
 
         private void AutumnTheme_Click(object sender, EventArgs e)
         {
-            changeTheme(Color.SandyBrown, Color.Firebrick, Color.PeachPuff, Color.DarkRed, Color.Firebrick, Color.MistyRose, Color.Maroon);
-            THEME = "autumn";
+            changeTheme("autumn", Color.SandyBrown, Color.Firebrick, Color.PeachPuff, Color.DarkRed, Color.Firebrick, Color.MistyRose, Color.Maroon);
         }
 
         // ============================ End Themes ================================
@@ -938,6 +944,7 @@ namespace ChakBot
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
+                
                 DialogResult result = MessageBox.Show("Are you sure you want to leave Chakbot? =[", "Dialog Title", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {

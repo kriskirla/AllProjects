@@ -1,4 +1,4 @@
-greetings;greetings=sup;hey;hello;hi;yo;hiii;heyy;helloo;hey whats up;chakbot;sawp
+greetings;greetings=sup;hey;hello;hi;yo;hiii;heyy;helloo;hey whats up;chakbot;sawp;hey =]
 rjokes;jokes=tell me a joke;tell me a funny joke;tell me something funny
 jokes=You're beautiful;I am a chalkboard;I am so funny
 rfacts;facts=tell me something interesting
@@ -27,5 +27,7 @@ rgeneric;generic=yes;no;nothing much
 generic=I see;lol;oh i see
 rgquestions;gresponse=would you like to eat;would you like to play;would you like to talk;would you like to date;want to date;want to play
 gresponse=No thanks;No I am okay;uh;uh no thanks;no I am fine;no thank you
-sgreetings;greetings;greetings=hello chakbot;sup chakbot;hey chakbot
+sgreetings;greetings;greetings=hello chakbot;sup chakbot;hey chakbot;hi chakbot;oh hey chakbot
 empty;greetings;greetings=;
+laugh;rlaugh=lol;haha;hah;hehe;uhh;uh;uh..
+rlaugh=??;what?;?;hm?;?;hmm?;...?
