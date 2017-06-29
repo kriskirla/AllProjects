@@ -1,9 +1,1 @@
-User:
- >>> testing
-ChakBot:
- >>> i am alive
-User:
- >>> hello
-ChakBot:
- >>> hi
 
