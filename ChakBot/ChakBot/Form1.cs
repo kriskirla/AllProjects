@@ -21,7 +21,10 @@ namespace ChakBot
         int historyIndex = 0;
         int prevIndex = 0;
         Random rnd = new Random();
-        string PATH = System.IO.Directory.GetCurrentDirectory() + "/brain.txt";
+        string PATH = System.IO.Directory.GetCurrentDirectory();
+
+        // Default Theme
+        string THEME = "dark";
 
         // Variables to store responses
         Dictionary<string, List<string>> categories = new Dictionary<string, List<string>>();
@@ -89,18 +92,23 @@ namespace ChakBot
             this.ActiveControl = InputChat;
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
 
+            read_brain(PATH + "/brain.txt");
+            read_config(PATH + "/config.txt");
+        }
+
+        private void read_brain(string path)
+        {
             // Read Text file to get responses
             // If brain.txt DNE, then create a blank new one
-            if (!System.IO.File.Exists(PATH))
+            if (!System.IO.File.Exists(path))
             {
-                using (System.IO.File.Create(PATH)) { }
+                using (System.IO.File.Create(path)) { }
             }
 
-            System.IO.StreamReader file = new System.IO.StreamReader(PATH);
+            System.IO.StreamReader file = new System.IO.StreamReader(path);
 
             // Read line and put into list
             string line;
-            int counter = 0;
             string categ;
             List<string> content;
             Regex rgx = new Regex("[^a-zA-Z0-9 -]");
@@ -108,9 +116,53 @@ namespace ChakBot
             while ((line = file.ReadLine()) != null)
             {
                 categ = line.Substring(0, line.IndexOf("="));
-                content = line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1).Split(';').ToList();
+                content = rgx.Replace(line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1), "").Split(';').ToList();
                 categories[categ] = content;
-                counter++;
+            }
+
+            file.Close();
+        }
+
+        private void read_config(string path)
+        {
+            // Read Text file to get responses
+            // If config.txt DNE, then create a default one
+            if (!System.IO.File.Exists(path))
+            {
+                using (System.IO.File.Create(path)) { }
+                System.IO.File.AppendAllText(path, "theme=dark");
+            }
+
+            System.IO.StreamReader file = new System.IO.StreamReader(path);
+
+            // Read line and put into list
+            string line;
+            string categ;
+            string content;
+
+            while ((line = file.ReadLine()) != null)
+            {
+                categ = line.Substring(0, line.IndexOf("="));
+                content = line.ToLower().Substring(line.IndexOf("=") + 1, line.Length - line.IndexOf("=") - 1);
+                if (categ == "theme")
+                {
+                    switch (content)
+                    {
+                        case "dark":
+                            ThemeDark.PerformClick();
+                            break;
+                        case "light":
+                            ThemeLight.PerformClick();
+                            break;
+                        case "cute":
+                            CuteTheme.PerformClick();
+                            break;
+                        case "autumn":
+                            AutumnTheme.PerformClick();
+                            break;
+                    }
+
+                }
             }
 
             file.Close();
@@ -857,23 +909,54 @@ namespace ChakBot
         private void ThemeDark_Click(object sender, EventArgs e)
         {
             changeTheme(Color.SlateGray, Color.White, Color.Black, Color.White, Color.LightCyan, Color.LightCyan, Color.Black);
+            THEME = "dark";
         }
 
         private void ThemeLight_Click(object sender, EventArgs e)
         {
             changeTheme(Color.Gainsboro, Color.Black, Color.FloralWhite, Color.Black, Color.Black, Color.Gainsboro, Color.Black);
+            THEME = "light";
         }
 
         private void CuteTheme_Click(object sender, EventArgs e)
         {
             changeTheme(Color.Thistle, Color.DarkMagenta, Color.LightPink, Color.Purple, Color.DarkMagenta, Color.Thistle, Color.Black);
+            THEME = "cute";
         }
 
         private void AutumnTheme_Click(object sender, EventArgs e)
         {
             changeTheme(Color.SandyBrown, Color.Firebrick, Color.PeachPuff, Color.DarkRed, Color.Firebrick, Color.MistyRose, Color.Maroon);
+            THEME = "autumn";
         }
 
         // ============================ End Themes ================================
+
+        // ============================ Save Settings on Exit ================================
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to leave Chakbot? =[", "Dialog Title", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    // Save settings to file
+                    System.IO.File.WriteAllText(PATH + "/config.txt", string.Empty);
+                    System.IO.File.AppendAllText(PATH + "/config.txt", "theme=" + THEME);
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        // ============================ End Save ================================
     }
 }
