@@ -802,165 +802,76 @@ namespace ChakBot
         // ============================ End Chakbot Features ================================
 
         // ============================ Themes ================================
-        private void ThemeDark_Click(object sender, EventArgs e)
+        private void changeTheme(Color Frame, Color Text, Color ChatFrame, Color ChatText, Color MenuTitle, Color MenuFrame, Color MenuText)
         {
             // Frame
-            this.BackColor = Color.SlateGray;
-            CopyRight1.BackColor = Color.SlateGray;
-            CopyRight1.ForeColor = Color.White;
-            CopyRight2.BackColor = Color.SlateGray;
-            CopyRight2.ForeColor = Color.White;
+            this.BackColor = Frame;
+            CopyRight1.BackColor = Frame;
+            CopyRight1.ForeColor = Text;
+            CopyRight2.BackColor = Frame;
+            CopyRight2.ForeColor = Text;
 
             // Text
-            OutputChat.BackColor = Color.Black;
-            OutputChat.ForeColor = Color.White;
-            InputChat.BackColor = Color.Black;
-            InputChat.ForeColor = Color.White;
-            TypingDisplay.BackColor = Color.Black;
-            TypingDisplay.ForeColor = Color.White;
+            OutputChat.BackColor = ChatFrame;
+            OutputChat.ForeColor = ChatText;
+            InputChat.BackColor = ChatFrame;
+            InputChat.ForeColor = ChatText;
+            TypingDisplay.BackColor = ChatFrame;
+            TypingDisplay.ForeColor = ChatText;
 
             // Menu
-            Menu.BackColor = Color.SlateGray;
-            MenuShortcuts.BackColor = Color.SlateGray;
-            MenuShortcuts.ForeColor = Color.LightCyan;
+            MenuStrip.BackColor = Frame;
+            MenuShortcuts.BackColor = Frame;
+            MenuShortcuts.ForeColor = MenuTitle;
             foreach (ToolStripMenuItem i in MenuShortcuts.DropDownItems)
             {
-                i.BackColor = Color.LightCyan;
-                i.ForeColor = Color.Black;
+                i.BackColor = MenuFrame;
+                i.ForeColor = MenuText;
             }
-            MenuSettings.BackColor = Color.SlateGray;
-            MenuSettings.ForeColor = Color.LightCyan;
-            MenuTheme.BackColor = Color.LightCyan;
-            MenuTheme.ForeColor = Color.Black;
+            MenuSettings.BackColor = Frame;
+            MenuSettings.ForeColor = MenuTitle;
+            MenuTheme.BackColor = MenuFrame;
+            MenuTheme.ForeColor = MenuText;
             foreach (ToolStripMenuItem i in MenuTheme.DropDownItems)
             {
-                i.BackColor = Color.LightCyan;
-                i.ForeColor = Color.Black;
+                i.BackColor = MenuFrame;
+                i.ForeColor = MenuText;
             }
 
             // Buttons
-            SaveButton.BackColor = Color.SlateGray;
-            SaveButton.ForeColor = Color.White;
-            Enter.BackColor = Color.SlateGray;
-            Enter.ForeColor = Color.White;
+            SaveButton.BackColor = Frame;
+            SaveButton.ForeColor = Text;
+            Enter.BackColor = Frame;
+            Enter.ForeColor = Text;
 
             // Right click
-            RCShortcuts.BackColor = Color.LightCyan;
-            RCShortcuts.ForeColor = Color.Black;
+            RCShortcuts.BackColor = MenuFrame;
+            RCShortcuts.ForeColor = MenuText;
             foreach (ToolStripMenuItem i in RCShortcuts.DropDownItems)
             {
-                i.BackColor = Color.LightCyan;
-                i.ForeColor = Color.Black;
+                i.BackColor = MenuFrame;
+                i.ForeColor = MenuText;
             }
+        }
+
+        private void ThemeDark_Click(object sender, EventArgs e)
+        {
+            changeTheme(Color.SlateGray, Color.White, Color.Black, Color.White, Color.LightCyan, Color.LightCyan, Color.Black);
         }
 
         private void ThemeLight_Click(object sender, EventArgs e)
         {
-            // Frame
-            this.BackColor = Color.Gainsboro;
-            CopyRight1.BackColor = Color.Gainsboro;
-            CopyRight1.ForeColor = Color.Black;
-            CopyRight2.BackColor = Color.Gainsboro;
-            CopyRight2.ForeColor = Color.Black;
-
-            // Text
-            OutputChat.BackColor = Color.WhiteSmoke;
-            OutputChat.ForeColor = Color.Black;
-            InputChat.BackColor = Color.WhiteSmoke;
-            InputChat.ForeColor = Color.Black;
-            TypingDisplay.BackColor = Color.WhiteSmoke;
-            TypingDisplay.ForeColor = Color.Black;
-
-            // Menu
-            Menu.BackColor = Color.Gainsboro;
-            MenuShortcuts.BackColor = Color.Gainsboro;
-            MenuShortcuts.ForeColor = Color.Black;
-            foreach (ToolStripMenuItem i in MenuShortcuts.DropDownItems)
-            {
-                i.BackColor = Color.Gainsboro;
-                i.ForeColor = Color.Black;
-            }
-            MenuSettings.BackColor = Color.Gainsboro;
-            MenuSettings.ForeColor = Color.Black;
-            MenuTheme.BackColor = Color.Gainsboro;
-            MenuTheme.ForeColor = Color.Black;
-            foreach (ToolStripMenuItem i in MenuTheme.DropDownItems)
-            {
-                i.BackColor = Color.Gainsboro;
-                i.ForeColor = Color.Black;
-            }
-
-            // Buttons
-            SaveButton.BackColor = Color.Gainsboro;
-            SaveButton.ForeColor = Color.Black;
-            Enter.BackColor = Color.Gainsboro;
-            Enter.ForeColor = Color.Black;
-
-            // Right click
-            RCShortcuts.BackColor = Color.Gainsboro;
-            RCShortcuts.ForeColor = Color.Black;
-            foreach (ToolStripMenuItem i in RCShortcuts.DropDownItems)
-            {
-                i.BackColor = Color.Gainsboro;
-                i.ForeColor = Color.Black;
-            }
+            changeTheme(Color.Gainsboro, Color.Black, Color.FloralWhite, Color.Black, Color.Black, Color.Gainsboro, Color.Black);
         }
 
         private void CuteTheme_Click(object sender, EventArgs e)
         {
-            // Frame
-            this.BackColor = Color.Thistle;
-            CopyRight1.BackColor = Color.Thistle;
-            CopyRight1.ForeColor = Color.DarkMagenta;
-            CopyRight2.BackColor = Color.Thistle;
-            CopyRight2.ForeColor = Color.DarkMagenta;
-
-            // Text
-            OutputChat.BackColor = Color.LightPink;
-            OutputChat.ForeColor = Color.DarkMagenta;
-            InputChat.BackColor = Color.LightPink;
-            InputChat.ForeColor = Color.DarkMagenta;
-            TypingDisplay.BackColor = Color.LightPink;
-            TypingDisplay.ForeColor = Color.DarkMagenta;
-
-            // Menu
-            Menu.BackColor = Color.Thistle;
-            MenuShortcuts.BackColor = Color.Thistle;
-            MenuShortcuts.ForeColor = Color.DarkMagenta;
-            foreach (ToolStripMenuItem i in MenuShortcuts.DropDownItems)
-            {
-                i.BackColor = Color.Plum;
-                i.ForeColor = Color.Black;
-            }
-            MenuSettings.BackColor = Color.Thistle;
-            MenuSettings.ForeColor = Color.DarkMagenta;
-            MenuTheme.BackColor = Color.Plum;
-            MenuTheme.ForeColor = Color.DarkMagenta;
-            foreach (ToolStripMenuItem i in MenuTheme.DropDownItems)
-            {
-                i.BackColor = Color.Plum;
-                i.ForeColor = Color.Black;
-            }
-
-            // Buttons
-            SaveButton.BackColor = Color.Thistle;
-            SaveButton.ForeColor = Color.DarkMagenta;
-            Enter.BackColor = Color.Thistle;
-            Enter.ForeColor = Color.DarkMagenta;
-
-            // Right click
-            RCShortcuts.BackColor = Color.Thistle;
-            RCShortcuts.ForeColor = Color.DarkMagenta;
-            foreach (ToolStripMenuItem i in RCShortcuts.DropDownItems)
-            {
-                i.BackColor = Color.Thistle;
-                i.ForeColor = Color.DarkMagenta;
-            }
+            changeTheme(Color.Thistle, Color.DarkMagenta, Color.LightPink, Color.Purple, Color.DarkMagenta, Color.Thistle, Color.Black);
         }
 
         private void AutumnTheme_Click(object sender, EventArgs e)
         {
-            // This is gonna be a lot of orange yellow red
+            changeTheme(Color.SandyBrown, Color.Firebrick, Color.PeachPuff, Color.DarkRed, Color.Firebrick, Color.MistyRose, Color.Maroon);
         }
 
         // ============================ End Themes ================================

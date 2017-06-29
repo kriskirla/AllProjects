@@ -50,7 +50,7 @@ namespace ChakBot
             this.CopyRight1 = new System.Windows.Forms.Label();
             this.TypingDisplay = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.Menu = new System.Windows.Forms.MenuStrip();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuShortcuts = new System.Windows.Forms.ToolStripMenuItem();
             this.BarHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.BarClear = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +68,7 @@ namespace ChakBot
             this.CuteTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.AutumnTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClick.SuspendLayout();
-            this.Menu.SuspendLayout();
+            this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // OutputChat
@@ -252,15 +252,15 @@ namespace ChakBot
             // 
             // Menu
             // 
-            this.Menu.BackColor = System.Drawing.Color.SlateGray;
-            this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuStrip.BackColor = System.Drawing.Color.SlateGray;
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuShortcuts,
             this.MenuSettings});
-            this.Menu.Location = new System.Drawing.Point(0, 0);
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(345, 24);
-            this.Menu.TabIndex = 11;
-            this.Menu.Text = "menuStrip1";
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "Menu";
+            this.MenuStrip.Size = new System.Drawing.Size(345, 24);
+            this.MenuStrip.TabIndex = 11;
+            this.MenuStrip.Text = "menuStrip1";
             // 
             // MenuShortcuts
             // 
@@ -381,7 +381,7 @@ namespace ChakBot
             this.AutumnTheme});
             this.MenuTheme.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuTheme.Name = "MenuTheme";
-            this.MenuTheme.Size = new System.Drawing.Size(152, 22);
+            this.MenuTheme.Size = new System.Drawing.Size(116, 22);
             this.MenuTheme.Text = "Themes";
             // 
             // ThemeDark
@@ -423,7 +423,7 @@ namespace ChakBot
             this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(345, 553);
             this.ContextMenuStrip = this.RightClick;
-            this.Controls.Add(this.Menu);
+            this.Controls.Add(this.MenuStrip);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.TypingDisplay);
             this.Controls.Add(this.CopyRight2);
@@ -437,8 +437,8 @@ namespace ChakBot
             this.Name = "Form1";
             this.Text = "ChakBot - AI Friend";
             this.RightClick.ResumeLayout(false);
-            this.Menu.ResumeLayout(false);
-            this.Menu.PerformLayout();
+            this.MenuStrip.ResumeLayout(false);
+            this.MenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,7 +463,7 @@ namespace ChakBot
         private System.Windows.Forms.ToolStripMenuItem TranslateMorse;
         private System.Windows.Forms.ToolStripMenuItem HelpMenu;
         private System.Windows.Forms.ToolStripMenuItem ClearScreen;
-        private new System.Windows.Forms.MenuStrip Menu;
+        private System.Windows.Forms.MenuStrip MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem MenuShortcuts;
         private System.Windows.Forms.ToolStripMenuItem BarHelp;
         private System.Windows.Forms.ToolStripMenuItem BarClear;
