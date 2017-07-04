@@ -100,7 +100,7 @@ namespace ChakBot
             read_config(PATH + "/config.txt");
 
             OutputChat.Text = "====================================================\r\n" +
-                "Chakbot: (v ^ O ^ )> Hello! My name is Chakbot!\r\n====================================================\r\n";
+                "Chakbot: (v ^  O ^ )> Hello! My name is Chakbot!\r\n====================================================\r\n";
         }
 
         private void read_brain(string path)
@@ -542,11 +542,16 @@ namespace ChakBot
             }
 
             // If brain doesn't know how to answer, guess a random reply LOL
-            string randomCateg = categories.Keys.ToList()[rnd.Next(0, categories.Keys.Count() - 1)];
-            int randomContent = rnd.Next(0, categories[randomCateg].Count() - 1);
-            string guess = categories[randomCateg][randomContent];
+            if (categories.Keys.Count != 0)
+            {
+                string randomCateg = categories.Keys.ToList()[rnd.Next(0, categories.Keys.Count() - 1)];
+                int randomContent = rnd.Next(0, categories[randomCateg].Count() - 1);
+                string guess = categories[randomCateg][randomContent];
 
-            return guess + "...\r\nChakBot: u( T ^ T )u I probably didn't answer that correctly. Please teach me if that is so (Check //help)";
+                return guess + "...\r\nChakBot: u( T ^ T )u I probably didn't answer that correctly. Please teach me if that is so (Check //help)";
+            }
+
+            return "I don't know how to answer that, please teach me =]";
         }
         // ============================ End Chakbot Settings ================================
 
