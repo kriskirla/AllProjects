@@ -29,5 +29,5 @@ If you start Chakbot without brain.txt, then Chakbot will not know how to answer
 
 config.txt is only there to store personal preferences
 
-#Future Projects:
+# Future Projects:
 I will import a Python version of Chakbot into Respberry Pi 3 and use voice recognition rather than keyboard input. (This will not come anytime soon as I am still learning)
