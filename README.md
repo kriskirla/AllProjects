@@ -29,5 +29,10 @@ If you start Chakbot without brain.txt, then Chakbot will not know how to answer
 
 config.txt is only there to store personal preferences
 
+# Current Progress:
+- Importing Chakbot from C# to Python, this should be done in two weeks including testing.
+- I have started learning circuitry with RPi3 and succesfully output messages to LCD display using python.
+
 # Future Projects:
-I will import a Python version of Chakbot into Respberry Pi 3 and use voice recognition rather than keyboard input. (This will not come anytime soon as I am still learning)
+- Actual Machine Learning. Currently Chalbot will only learn if you teach it, not really "learning" per se. This feature will be added as soon as I learn more about AI in university.
+- Speech recognition. This makes talking with Chakbot possible instead of inputting with keyboard
