@@ -34,8 +34,8 @@ config.txt is only there to store personal preferences
 - I have started learning circuitry with RPi3 and succesfully output messages to LCD display using python. Currently learning more and familarizing what I can do with RPi and how I can combine it with Chakbot.
 
 # Future Projects:
-- Actual Machine Learning. Currently Chalbot will only learn if you teach it, not really "learning" per se. This feature will be added as soon as I learn more about AI in university.
-- Speech recognition. This makes talking with Chakbot possible instead of inputting with keyboard
+- Actual Machine Learning. Currently Chakbot will only learn if you teach it, not really "learning" per se. This feature will be added as soon as I learn more about AI in university.
+- Speech recognition. This makes talking with Chakbot possible instead of inputting with keyboard. 
 
 
 # Other two programs
