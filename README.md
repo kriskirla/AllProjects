@@ -31,7 +31,7 @@ config.txt is only there to store personal preferences
 
 # Current Progress:
 - Importing Chakbot from C# to Python, this should be done in two weeks including testing.
-- I have started learning circuitry with RPi3 and succesfully output messages to LCD display using python.
+- I have started learning circuitry with RPi3 and succesfully output messages to LCD display using python. Currently learning more and familarizing what I can do with RPi and how I can combine it with Chakbot.
 
 # Future Projects:
 - Actual Machine Learning. Currently Chalbot will only learn if you teach it, not really "learning" per se. This feature will be added as soon as I learn more about AI in university.
