@@ -1,6 +1,7 @@
 import random
 import os
 import re
+import sys
 import datetime
 
 # Declare Global Variables
@@ -70,25 +71,30 @@ def chakbot_conversation(categories):
                 "teach": "print(teach(user_input[user_input.index('=') + 1:]))",
                 "cal": "print(calculate(user_input[user_input.index('=') + 1:]))",
                 "con": "print(convert(user_input[user_input.index('=') + 1:]))",
-                "e": "print(user_input[user_input.index('=') + 1:]))",
-                "d;c": "print(en_de(user_input[0], user_input[user_input.index('=') + 1:]))",
-                "mc=": "print(morse(user_input[user_input.index('=') + 1:]))"}
+                "e": "print(encrypt(user_input[user_input.index('=') + 1:]))",
+                "d;c": "print(decrypt(user_input[user_input.index(';') + 1:user_input.index('=')], " +
+                       "user_input[user_input.index('=') + 1:]))",
+                "mc": "print(morse(user_input[user_input.index('=') + 1:]))"}
 
     print("====================================================\r\n" +
           "Chakbot: (v ^  O ^ )> Hello! My name is Chakbot!\r\n" +
+          "Type //help if you need help.\r\n" +
           "====================================================\r\n")
 
     # User Input Analyzer
-    while (True):
+    while True:
         # Get user input
         user_input = input()
 
         if user_input == "//exit":
             # Always check if user wants to terminate
-            break
+            sys.exit()
         elif user_input in commands.keys():
             # Check if user commands
             exec(commands[user_input])
+        elif '=' in user_input and user_input[0:2] == "d;":
+            # Since decrypt has its own format
+            exec(commands["d;c"])
         elif '=' in user_input and user_input[:user_input.index('=')] in commands:
             # Check if user wants Chakbot Functionality
             exec(commands[user_input[:user_input.index('=')]])
@@ -155,7 +161,7 @@ def calculate(user_input):
     """
     try:
         return eval(user_input.replace('^', "**"))
-    except NameError and SyntaxError:
+    except:
         return 'Please check your syntax'
 
 
@@ -210,22 +216,78 @@ def convert(user_input):
         # Parse string
         user_input = user_input.replace(" ", "")
         m = re.search("[a-z]", user_input)
-        unit_number = user_input[:m.start()]
+        unit_number = float(user_input[:m.start()])
         unit_1 = user_input[m.start():user_input.index('to')]
         unit_2 = user_input[user_input.index('to') + 2:]
 
         # Find out the metric category
         for i in Metrics.keys():
             if unit_1 in Metrics[i].keys() and unit_2 in Metrics[i].keys():
-                return str(Metrics[i][unit_2] / Metrics[i][unit_1]) + unit_2 + " [" + i + " Conversion]"
-            else:
-                return "Please make sure the two units are convertible."
+                return str(unit_number * (Metrics[i][unit_2] / Metrics[i][unit_1])) + unit_2 + " [" + i + " Conversion]"
+
+        return "Please make sure the two units are convertible."
     except:
         return "Please check your syntax and make sure the unit is correct."
 
 
-def en_de(type, user_input):
-    return ""
+def encrypt(user_input):
+    alpha_u = "LBWFPXGDIAKJMVOEQSZURNCHYT"
+    alpha_l = "zvgfwdhoijclknmperytsxbqau"
+    numbers = "5973164802"
+    symbols = "!>{$%'(*&)-_=+#}?/<];:~`,.@^[|\" "
+    code = ""
+    res = ""
+
+    try:
+        # Encrypt, then shift each character by random
+        for i in user_input:
+            pick = random.randint(0, 9)
+            code = str(pick) + code
+
+            if i in alpha_u or i in alpha_l:
+                if i.isupper():
+                    res += alpha_u[(alpha_u.index(i) + pick) % 26]
+                else:
+                    res += alpha_l[(alpha_l.index(i) + pick) % 26]
+            elif i in numbers:
+                res += numbers[(numbers.index(i) + pick) % 10]
+            elif i in symbols:
+                res += symbols[(symbols.index(i) + pick) % 32]
+            else:
+                res += i
+                code = "0" + code[1:]
+
+        return res + " [" + code + ']'
+
+    except:
+        return "Encrpytion Error"
+
+
+def decrypt(code, user_input):
+    alpha_u = "LBWFPXGDIAKJMVOEQSZURNCHYT"
+    alpha_l = "zvgfwdhoijclknmperytsxbqau"
+    numbers = "5973164802"
+    symbols = "!>{$%'(*&)-_=+#}?/<];:~`,.@^[|\" "
+    res = ""
+
+    try:
+        for i in range(0, len(user_input)):
+            if user_input[i] in alpha_u or user_input[i] in alpha_l:
+                if user_input[i].isupper():
+                    # The code is actually read backwards for security
+                    res += alpha_u[alpha_u.index(user_input[i]) - int(code[len(code) - 1 - i])]
+                else:
+                    res += alpha_l[alpha_l.index(user_input[i]) - int(code[len(code) - 1 - i])]
+            elif user_input[i] in numbers:
+                res += numbers[numbers.index(user_input[i]) - int(code[len(code) - 1 - i])]
+            elif user_input[i] in symbols:
+                res += symbols[symbols.index(user_input[i]) - int(code[len(code) - 1 - i])]
+            else:
+                res += user_input[i]
+
+        return res
+    except:
+        return "Decryption Error"
 
 
 def morse(user_input):
