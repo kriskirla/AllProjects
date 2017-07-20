@@ -55,7 +55,6 @@ def chakbot_conversation(categories):
     help_menu = str("ChakBot: " +
                     "List of functions\r\n" +
                     "====================================================\r\n" +
-                    "//clear\t| Clear the messages on screen\r\n" +
                     "//date\t| Display the current time\r\n" +
                     "//exit\t| Terminate Chakbot\r\n" +
                     "teach=\t| Teach chakbot (root>message>corres>message)\r\n" +
@@ -67,14 +66,14 @@ def chakbot_conversation(categories):
                     "====================================================\r\n")
 
     commands = {"//help": "print(help_menu)",
-                "//date": "print(datetime.datetime.now())",
-                "teach": "print(teach(user_input[user_input.index('=') + 1:]))",
-                "cal": "print(calculate(user_input[user_input.index('=') + 1:]))",
-                "con": "print(convert(user_input[user_input.index('=') + 1:]))",
-                "e": "print(encrypt(user_input[user_input.index('=') + 1:]))",
-                "d;c": "print(decrypt(user_input[user_input.index(';') + 1:user_input.index('=')], " +
+                "//date": "print('Chakbot: ' + datetime.datetime.now())",
+                "teach": "print('Chakbot: ' + teach(user_input[user_input.index('=') + 1:]))",
+                "cal": "print('Chakbot: ' + calculate(user_input[user_input.index('=') + 1:]))",
+                "con": "print('Chakbot: ' + convert(user_input[user_input.index('=') + 1:]))",
+                "e": "print('Chakbot: ' + encrypt(user_input[user_input.index('=') + 1:]))",
+                "d;c": "print('Chakbot: ' + decrypt(user_input[user_input.index(';') + 1:user_input.index('=')], " +
                        "user_input[user_input.index('=') + 1:]))",
-                "mc": "print(morse(user_input[user_input.index('=') + 1:]))"}
+                "mc": "print('Chakbot: ' + morse(user_input[user_input.index('=') + 1:]))"}
 
     print("====================================================\r\n" +
           "Chakbot: (v ^  O ^ )> Hello! My name is Chakbot!\r\n" +
@@ -84,7 +83,7 @@ def chakbot_conversation(categories):
     # User Input Analyzer
     while True:
         # Get user input
-        user_input = input()
+        user_input = input("User: ")
 
         if user_input == "//exit":
             # Always check if user wants to terminate
@@ -100,7 +99,7 @@ def chakbot_conversation(categories):
             exec(commands[user_input[:user_input.index('=')]])
         else:
             # Get reply from brain
-            print(get_message(categories, user_input))
+            print("Chakbot: " + get_message(categories, user_input))
 
 
 def get_message(categories, user_input):
@@ -257,7 +256,7 @@ def encrypt(user_input):
                 res += i
                 code = "0" + code[1:]
 
-        return res + " [" + code + ']'
+        return res + " [" + morse(code) + ']'
 
     except:
         return "Encrpytion Error"
@@ -268,6 +267,7 @@ def decrypt(code, user_input):
     alpha_l = "zvgfwdhoijclknmperytsxbqau"
     numbers = "5973164802"
     symbols = "!>{$%'(*&)-_=+#}?/<];:~`,.@^[|\" "
+    dcode = morse(code)
     res = ""
 
     try:
@@ -275,13 +275,13 @@ def decrypt(code, user_input):
             if user_input[i] in alpha_u or user_input[i] in alpha_l:
                 if user_input[i].isupper():
                     # The code is actually read backwards for security
-                    res += alpha_u[alpha_u.index(user_input[i]) - int(code[len(code) - 1 - i])]
+                    res += alpha_u[alpha_u.index(user_input[i]) - int(dcode[len(dcode) - 1 - i])]
                 else:
-                    res += alpha_l[alpha_l.index(user_input[i]) - int(code[len(code) - 1 - i])]
+                    res += alpha_l[alpha_l.index(user_input[i]) - int(dcode[len(dcode) - 1 - i])]
             elif user_input[i] in numbers:
-                res += numbers[numbers.index(user_input[i]) - int(code[len(code) - 1 - i])]
+                res += numbers[numbers.index(user_input[i]) - int(dcode[len(dcode) - 1 - i])]
             elif user_input[i] in symbols:
-                res += symbols[symbols.index(user_input[i]) - int(code[len(code) - 1 - i])]
+                res += symbols[symbols.index(user_input[i]) - int(dcode[len(dcode) - 1 - i])]
             else:
                 res += user_input[i]
 
@@ -291,7 +291,35 @@ def decrypt(code, user_input):
 
 
 def morse(user_input):
-    return ""
+    morse_table = {
+        'a': ".-", 'b': "-...", 'c': "-.-.", 'd': "-..", 'e': ".", 'f': "..-.", 'g': "--.", 'h': "....", 'i': "..",
+        'j': ".---", 'k': "-.-", 'l': ".-..", 'm': "--", 'n': "-.", 'o': "---", 'p': ".--.", 'q': "--.-", 'r': ".-.",
+        's': "...", 't': "-", 'u': "..-", 'v': "...-", 'w': ".--", 'x': "-..-", 'y': "-.--", 'z': "--..",
+        '1': ".----", '2': "..---", '3': "...--", '4': "....-", '5': ".....",
+        '6': "-....", '7': "--...", '8': "---..", '9': "----.", '0': "-----"
+    }
+    res = ""
+    message = user_input.lower().split(" ")
+
+    try:
+        for i in range(0, len(message)):
+            # Check if morse code
+            if message[i] in morse_table.values():
+                res += next(key for key, value in morse_table.items() if value == message[i])
+            elif message[i] == "":
+                res += " "
+            else:
+                for j in message[i]:
+                    if j in morse_table.keys():
+                        res += morse_table[j] + " "
+                    else:
+                        res += j + " "
+                # End of word
+                res += " "
+
+        return res.rstrip()
+    except:
+        print("Morse Code Error")
 
 
 # Runs the code at launch
