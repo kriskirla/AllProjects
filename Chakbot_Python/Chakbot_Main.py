@@ -58,17 +58,17 @@ def chakbot_conversation(categories):
                     "//date\t| Display the current time\r\n" +
                     "//exit\t| Terminate Chakbot\r\n" +
                     "teach=\t| Teach chakbot (root>message>corres>message)\r\n" +
-                    "e=\t\t| Encrypt the message inserted after =\r\n" +
+                    "e=\t| Encrypt the message inserted after =\r\n" +
                     "d;c=\t| Decrypt with the code c\r\n" +
-                    "mc=\t\t| Encrypt/decrypt message into morse code\r\n" +
+                    "mc=\t| Encrypt/decrypt message into morse code\r\n" +
                     "cal=\t| Calculate\r\n" +
                     "con=\t| Convert units (#unit to unit)\r\n" +
                     "====================================================\r\n")
 
     commands = {"//help": "print(help_menu)",
-                "//date": "print('Chakbot: ' + datetime.datetime.now())",
+                "//date": "print('Chakbot: ' + str(datetime.datetime.now()))",
                 "teach": "print('Chakbot: ' + teach(user_input[user_input.index('=') + 1:]))",
-                "cal": "print('Chakbot: ' + calculate(user_input[user_input.index('=') + 1:]))",
+                "cal": "print('Chakbot: ' + str(calculate(user_input[user_input.index('=') + 1:])))",
                 "con": "print('Chakbot: ' + convert(user_input[user_input.index('=') + 1:]))",
                 "e": "print('Chakbot: ' + encrypt(user_input[user_input.index('=') + 1:]))",
                 "d;c": "print('Chakbot: ' + decrypt(user_input[user_input.index(';') + 1:user_input.index('=')], " +
