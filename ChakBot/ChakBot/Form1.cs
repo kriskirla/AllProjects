@@ -176,6 +176,7 @@ namespace ChakBot
 
         // ============================ End Initialization ================================
 
+        // FIXES: These can be shortened using a Dictionary!!!!
         // ============================ UI Features ================================
         private void HelpMenu_Click(object sender, EventArgs e)
         {
@@ -548,7 +549,7 @@ namespace ChakBot
                 int randomContent = rnd.Next(0, categories[randomCateg].Count() - 1);
                 string guess = categories[randomCateg][randomContent];
 
-                return guess + "...\r\nChakBot: u( T ^ T )u I probably didn't answer that correctly. Please teach me if that is so (Check //help)";
+                return guess + "...\r\nChakBot: u( T ^ T )u If I did not answer that correctly, please teach me. (Check //help)";
             }
 
             return "I don't know how to answer that, please teach me =]";
