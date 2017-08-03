@@ -30,7 +30,7 @@ If you start Chakbot without brain.txt, then Chakbot will not know how to answer
 config.txt is only there to store personal preferences
 
 # Current Progress:
-- Importing Chakbot from C# to Python, this should be done in two weeks including testing.
+- Translating Chakbot from C# to Python to enable multi-platform as well as use in conjunction with Raspberry Pi
 - I have started learning circuitry with RPi3 and succesfully output messages to LCD display using python. Currently learning more and familarizing what I can do with RPi and how I can combine it with Chakbot.
 
 # Future Projects:
