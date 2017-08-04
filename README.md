@@ -17,7 +17,7 @@ Current features:
 - Unit Conversion
 - Tell time
 
-UI Features:
+UI Features (Only on C#):
 - Different Themes
 
 ![Chakbot: Machine learning in C#](https://github.com/kriskirla/AllProjects/blob/master/chakbot.PNG)
