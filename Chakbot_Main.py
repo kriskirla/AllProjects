@@ -81,10 +81,10 @@ def response_decider():
                 # Chakbot will request message to translate to morse
                 print('Chakbot: Sure, here are the games\r\n' +
                       "1. tic tac toe")
-                print(str(game_launcher(input("Chakbot: Which game would you like to play?\r\nInput: "))))
+                print('Chakbot: ' + str(game_launcher(input("Chakbot: Which game would you like to play?\r\nInput: "))))
             else:
                 # Conversion following decrypt
-                print('Chakbot: ' + str(game_launcher(user_input[6:])))
+                print('Chakbot: ' + str(game_launcher(user_input[5:])))
         else:
             # Get reply from brain
             print("Chakbot: " + get_message(user_input))
