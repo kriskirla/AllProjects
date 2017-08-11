@@ -54,7 +54,10 @@ def get_message(user_input):
         # If it's not learned, ask to teach
         response = input("Chakbot: I did not learn how to respond to this. How should I respond?\r\nInput: ")
 
-        return teach("taught" + user_input.replace(' ', ''), user_input, response)
+        if (response.lower() != "cancel"):
+            return teach("taught" + user_input.replace(' ', ''), user_input, response)
+        else:
+            return "Cancelled Successfully"
 
         # This is for random picks
         # if len(CATEGORIES) > 0:
@@ -78,6 +81,10 @@ def teach(categ, request, response):
         str: The result of success of fail.
     """
     try:
+        # Check to make sure no field is empty
+        if request == "" or response == "":
+            return "Please enter the correctly for each field."
+
         # Remove all non-ascii from user_input
         regex = re.compile('[^a-zA-Z0-9 ]')
         request = regex.sub('', request).lower()

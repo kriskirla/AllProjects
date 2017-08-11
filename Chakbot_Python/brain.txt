@@ -38,3 +38,5 @@ taughthowsmyday=hows my day
 r;taughthowsmyday=It's going to be a good day!
 taughtwhatsthedate=whats the date
 r;taughtwhatsthedate=Type //date
+taughtwannaplay=wanna play
+r;taughtwannaplay=Yes, let's play Tic Tac Toe! Type: game 1
