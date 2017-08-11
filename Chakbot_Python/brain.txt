@@ -1,5 +1,5 @@
 greeting=sup;hey;hello;hi;yo;hiii;heyy;helloo;hey whats up;chakbot;whats up;hello chakbot;hey chakbot;hi chakbot;sup chakbot
-r;greeting=Sup;Hey;Hello;Hi;Yo;Heyy;Helloo;
+r;greeting=Sup;Hey;Hello;Hi;Yo;Heyy;Helloo
 greetingcont=whats up;how are you;whats new;whats up chakbot
 r;greetingcont=Nothing special; Same as usual; Working hard to learn more =]
 greetresponse=yes;no;nothing much;nothing special
@@ -32,3 +32,9 @@ bored=bored;i am bored;i am so bored;so bored;but i am so bored;what should i do
 r;bored=You can teach me things meanwhile =];You have me to talk to;This is why I am here;aww you can talk with me;Have a chat with me;have a chat with me
 action=would you like to eat;would you like to play;would you like to talk;would you like to date;want to date;want to play
 r;action=No thanks;No I am okay;uh;uh no thanks;no I am fine;no thank you
+taughthowsmydaychakbot=hows my day chakbot
+r;taughthowsmydaychakbot=It'll be great!
+taughthowsmyday=hows my day
+r;taughthowsmyday=It's going to be a good day!
+taughtwhatsthedate=whats the date
+r;taughtwhatsthedate=Type //date

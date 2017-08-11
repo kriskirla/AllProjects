@@ -1,16 +1,15 @@
 import re
 import random
+import os
 
 # This global variable is used to refresh every time new content is learned
 CATEGORIES = {}
+PATH = os.getcwd() + "/brain.txt"
 
 
-def read_brain(path):
+def read_brain():
     """
     This function is used to read the brain.txt file so Chakbot knows how to respond
-
-    Args:
-        path (str): The path to the brain.txt file
 
     Returns:
         (dict of str:list): All Categories read from brain
@@ -19,7 +18,7 @@ def read_brain(path):
     # Check if brain exist, if not then create it
     try:
         # Read file to list by lines
-        with open(path) as f:
+        with open(PATH) as f:
             lines = f.read().splitlines()
 
         # Get information for each line
@@ -29,7 +28,7 @@ def read_brain(path):
                 content = i[i.index('=') + 1:].split(';')
                 CATEGORIES[category] = content
     except FileNotFoundError:
-        open(path, 'w')
+        open(PATH, 'w')
 
 
 def get_message(user_input):
@@ -52,24 +51,25 @@ def get_message(user_input):
             if user_input in CATEGORIES[i] and ';' not in i:
                 return random.choice(CATEGORIES["r;" + i])
 
-        # If it's not learned, make a random guess
-        # Pick random response category, then select any element
-        if len(CATEGORIES) > 0:
-            pick_categ, item = random.choice(list(CATEGORIES.items()))
-            while ';' in pick_categ:
-                pick_categ, item = random.choice(list(CATEGORIES.items()))
-            return random.choice(item)
+        # If it's not learned, ask to teach
+        response = input("Chakbot: I did not learn how to respond to this. How should I respond?\r\nInput: ")
 
-        return "I don't know how to answer that, please teach me =]"
-    except:
+        return teach("taught" + user_input.replace(' ', ''), user_input, response)
+
+        # This is for random picks
+        # if len(CATEGORIES) > 0:
+        #    pick_categ, item = random.choice(list(CATEGORIES.items()))
+        #    while ';' in pick_categ:
+        #        pick_categ, item = random.choice(list(CATEGORIES.items()))
+        #    return random.choice(item)
+    except all:
         return "Something went wrong, please trace the steps you performed and report to developer."
 
 
-def teach(path, categ, request, response):
+def teach(categ, request, response):
     """ This function is to input information to brain.txt
 
     Args:
-        path (str) : Path to brain.txt
         categ (str) : Current category to teach
         request(str) : When the trigger the response
         response (str) : The response for the request
@@ -85,11 +85,12 @@ def teach(path, categ, request, response):
         # If categ already exist
         if categ in CATEGORIES.keys():
             # Replace the original with original + new
-            with open(path, 'r+') as f:
+            with open(PATH, 'r+') as f:
                 # Locate line and replace
                 lines = f.readlines()
                 for i, line in enumerate(lines):
-                    if request != "": # This actually means no response wanted, just adding requests
+                    # This actually means no response wanted, just adding requests
+                    if request != "":
                         if line.startswith(categ):
                             lines[i] = line.replace('\n', '') + ';' + request + '\n'
                         if line.startswith("r;" + categ):
@@ -104,11 +105,11 @@ def teach(path, categ, request, response):
                     f.write(line)
         else:
             # If not, then add a new category
-            with open(path, "a") as file:
+            with open(PATH, "a") as file:
                 file.write(categ + "=" + request + "\n" + "r;" + categ + "=" + response + '\n')
 
         # Update CATEGORIES
-        read_brain(path)
+        read_brain()
 
         return "Thank you, I've learned it!"
     except:

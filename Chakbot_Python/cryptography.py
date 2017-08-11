@@ -71,7 +71,7 @@ def morse(user_input):
         '6': "-....", '7': "--...", '8': "---..", '9': "----.", '0': "-----"
     }
     res = ""
-    message = user_input.split(" ")
+    message = user_input.lower().split(" ")
 
     try:
         for i in range(0, len(message)):
@@ -90,5 +90,5 @@ def morse(user_input):
                 res += " "
 
         return res.rstrip()
-    except:
+    except Exception:
         print("Morse Code Error")
