@@ -39,5 +39,10 @@ config.txt is only there to store personal preferences
 # Other two programs
 The other programs were created a few years ago, which inspired the functionalities of Chakbot.
 
-# Previous Log
-[2017-07-15] Started Translation Project from C# to Python
+# Logs
+[2017-08-11] Completed Translation from C# to Python
+[2017-07-15] Started Learning RPi3
+[2017-07-06] Started Translation Project from C# to Python
+[2017-06-25] Completed C# Chakbot but decided to use Python
+[2017-06-16] Finished UI for Chakbot
+[2017-06-01] Started Building Chakbot
