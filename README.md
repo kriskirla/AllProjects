@@ -1,6 +1,6 @@
 # Current Progress:
-- Translating Chakbot from C# to Python to enable multi-platform as well as use in conjunction with Raspberry Pi
-- I have started learning circuitry with RPi3 and succesfully output messages to LCD display using python. Currently learning more and familarizing what I can do with RPi and how I can combine it with Chakbot.
+- Translation to Python has been completed. It is currently under regression testing.
+- When testing is completed, Chakbot will be tested on RPi3 to run on 16x2 LCD Display
 
 # Future Projects:
 - Actual Machine Learning. Currently Chakbot will only learn if you teach it, not really "learning" per se. This feature will be added as soon as I learn more about AI in university.
@@ -38,3 +38,6 @@ config.txt is only there to store personal preferences
 
 # Other two programs
 The other programs were created a few years ago, which inspired the functionalities of Chakbot.
+
+# Previous Log
+[2017-07-15] Started Translation Project from C# to Python
