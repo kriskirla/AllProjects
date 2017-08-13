@@ -49,16 +49,27 @@ def get_message(user_input):
         for i in CATEGORIES.keys():
             # Loop through all requests to see if it exists
             if user_input in CATEGORIES[i] and ';' not in i:
+                # Special Interactions
+                if (i == "salute"):
+                    return 0
+                elif (i == "askingdate"):
+                    return 1
+
+                # For the rest of the messages
                 return random.choice(CATEGORIES["r;" + i])
 
         # If it's not learned, ask to teach
-        response = input("Chakbot: I did not learn how to respond to this. How should I respond?\r\nInput: ")
+        response = input("Chakbot: I did not learn how to respond to this. How should I respond? (or cancel)\r\nInput: ")
 
-        if (response.lower() != "cancel"):
-            return teach("taught" + user_input.replace(' ', ''), user_input, response)
-        else:
+        # Make sure chakbot responses. Program can handle empty response, but I don't want that.
+        while response == "":
+            response = input("Chakbot: You can't teach me to respond with nothing, it looks bads on me ( o - o )\r\nInput: ")
+
+        if (response.lower() == "cancel"):
             return "Cancelled Successfully"
-
+        else:
+            return teach("taught" + user_input.replace(' ', ''), user_input, response)
+            
         # This is for random picks
         # if len(CATEGORIES) > 0:
         #    pick_categ, item = random.choice(list(CATEGORIES.items()))

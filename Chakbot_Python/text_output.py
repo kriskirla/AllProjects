@@ -1,17 +1,17 @@
 HELP_MENU = str("ChakBot: " +
                 "List of functions\r\n" +
                 "===========================================================\r\n" +
-                "To see more details, type help <category>.\r\ni.e. help teach\r\n" +
-                "---\r\n" +
-                "//date\t| Display the current time\r\n" +
-                "//exit\t| Terminate Chakbot\r\n" +
-                "teach\t| Teach chakbot. Optional teach <category> \"<request>\" \"<response>\"\r\n" +
-                "encrypt\t| Encrypt a message. Optional: encrypt <message>\r\n" +
-                "decrypt\t| Decrypt a message with the key. Optional: decrypt <message> <key>\r\n" +
-                "morse\t| Encrypt/decrypt message into morse code. Optional: morse <message>\r\n" +
-                "calculate\t| Calculator. Optional: calculate <formula>\r\n" +
-                "convert\t| Convert units. Optional: convert <number> <metric> to <metric>\r\n" +
-                "game\t| Play built-in games. Optional: game <name of game>\r\n"
+                "To see usage and details, type help <category>\r\n" +
+                "i.e. help teach\r\n" +
+                "-----------------------------------------------------------\r\n" +
+                "//exit\t\t| Terminate Chakbot\r\n" +
+                "teach\t\t| Teach chakbot how to respond\r\n"
+                "encrypt\t\t| Encrypt a message\r\n" +
+                "decrypt\t\t| Decrypt a message with the key\r\n" +
+                "morse\t\t| Translate message into morse code\r\n" +
+                "calculate\t| Built-in Calculator\r\n" +
+                "convert\t\t| Convert units\r\n" +
+                "game\t\t| Play built-in games\r\n"
                 "===========================================================\r\n")
 
 HELP_EX = {
@@ -36,8 +36,9 @@ HELP_EX = {
                "Usage 2: convert <conversion>\r\nThis is a faster shortcut.\r\n" +
                "Example: convert 3 cm to mm",
     "game": "Usage 1: game\r\nThis will guide the user step by step.\r\n\r\n" +
-            "Usage 2: game <name of the game>\r\nThis is a faster shortcut.\r\n" +
-            "Example: game tictactoe",
+            "Usage 2: game <name/id of the game>\r\nThis is a faster shortcut.\r\n" +
+            "Example: game tictactoe\r\n" +
+            "Example: game 1"
 }
 
 INTRO = str("====================================================\r\n" +

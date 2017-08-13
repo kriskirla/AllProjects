@@ -17,9 +17,6 @@ def response_decider():
             print(HELP_MENU)
         elif user_input[:4].lower() == "help" and user_input[5:] in HELP_EX.keys():
             print("{\r\n" + HELP_EX[user_input[5:]] + "\r\n}\r\n")
-        elif user_input == "//date":
-            # Display date and time
-            print('Chakbot: ' + str(datetime.datetime.now()))
         elif user_input == "//exit":
             # Always check if user wants to terminate
             sys.exit()
@@ -87,7 +84,24 @@ def response_decider():
                 print('Chakbot: ' + str(game_launcher(user_input[5:])))
         else:
             # Get reply from brain
-            print("Chakbot: " + get_message(user_input))
+            reply = get_message(user_input)
+
+            # For if user wants to stop talking
+            if (reply == 0):
+                option = input("Chakbot: Do you want to leave me? (y/n) <(T ^ T v)\r\nOption: ")
+                if option == 'y':
+                    print(str("Chakbot: " + random.choice(CATEGORIES["r;salute"])))
+                    sys.exit()
+                elif option == 'n':
+                    print("Chakbot: Yay! We can continue talking ^( ^ o ^ )>")
+                else:
+                    print("Chakbot: That's not a valid option, so you are staying with me.")
+            elif (reply == 1):
+                # For asking dates
+                print("Chakbot: " + random.choice(CATEGORIES["r;askingdate"]) + " " + str(datetime.datetime.now()))
+            else:
+                # For all responses
+                print("Chakbot: " + reply)
 
 
 if __name__ == "__main__":
