@@ -126,7 +126,7 @@ TRIVIA_CORRESPONDENCE = {
 }
 
 TRIVIA_ANSWER = {
-    "trivia_geography": ['1', '2', '2', '4', '4', '4', '1', '3'],
+    "trivia_geography": ['1', '2', '2', '4', '4', '4', '1', '1'],
     "trivia_science": ['3', '2', '2', '3', '1', '1', '3', '3'],
     "trivia_history": ['3', '4', '2', '2', '4', '3', '2', '1'],
     "trivia_art": ['4', '2', '3'],
