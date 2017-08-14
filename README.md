@@ -18,7 +18,7 @@ Current features:
 - Unit Conversion
 - Tell time
 
-<img src="https://github.com/kriskirla/AllProjects/blob/master/img/teach.png" width="400" height="200"/>
+<img src="https://github.com/kriskirla/AllProjects/blob/master/img/teach.png" width="500" height="250"/>
 
 ![encrypt](https://github.com/kriskirla/AllProjects/blob/master/img/encrypt.png)
 ![convert](https://github.com/kriskirla/AllProjects/blob/master/img/convert.png)
