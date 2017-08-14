@@ -142,28 +142,38 @@ def trivia(categories):
             print("Please pick one of the available categories =]\r\n")
 
         # Game Begins
-        pick = random.randint(0, len(categories[category]) - 1)
-        print("\r\nQuestion: " + categories[category][pick] + "?\r\n")
-        print(categories["q;" + category][pick] + "\r\n")
-        answer = input("Answer: ").lower()
+        same = True
+        while same:
+            pick = random.randint(0, len(categories[category]) - 1)
+            print("\r\nQuestion: " + categories[category][pick] + "?\r\n")
+            print(categories["q;" + category][pick] + "\r\n")
+            answer = input("Answer: ").lower()
 
-        # Adding separator to look better
-        print("-----")
+            # Adding separator to look better
+            print("-----")
 
-        if answer == categories["r;" + category][pick].lower():
-            print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
-        elif answer == TRIVIA_ANSWER[category][pick]:
-            print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
-        else:
-            print("Chakbot: That is incorrect!\r\nChakbot: The Answer is " + categories["r;" + category][pick] +
-                  "\r\n\r\n" + categories["t;" + category][pick])
+            if answer == categories["r;" + category][pick].lower():
+                print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
+            elif answer == TRIVIA_ANSWER[category][pick]:
+                print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
+            else:
+                print("Chakbot: That is incorrect!\r\nChakbot: The Answer is " + categories["r;" + category][pick] +
+                      "\r\n\r\n" + categories["t;" + category][pick])
 
-        print("-----\r\n")
+            print("-----\r\n")
 
-        # Prompt user to play again
-        terminate = str(input("Would you like to play again? (y/n)\r\nOption: ")).lower()
+            # Prompt user to play again
+            terminate = str(input("Chakbot: Would you like to play again? (y/n)\r\nOption: ")).lower()
 
-        if terminate == 'n':
-            return "Thanks for playing!"
-        elif terminate != 'y':
-            return "I'll take that as a no =["
+            if terminate == 'n':
+                return "Thanks for playing!"
+            elif terminate != 'y':
+                return "I'll take that as a no =["
+
+            confirm = input("Chakbot: Same Category?\r\nOption: ").lower()
+
+            if confirm == 'n':
+                same = False
+            elif confirm != 'y':
+                print("Guessing that's a no")
+                same = False
