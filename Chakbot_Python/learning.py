@@ -50,10 +50,13 @@ def get_message(user_input):
             # Loop through all requests to see if it exists
             if user_input in CATEGORIES[i] and ';' not in i:
                 # Special Interactions
-                if (i == "salute"):
+                if i == "salute":
                     return 0
-                elif (i == "askingdate"):
+                elif i == "askingdate":
                     return 1
+                elif i[:6] == "trivia":
+                    print("Chakbot: " + CATEGORIES["r;" + i][CATEGORIES[i].index(user_input)])
+                    return 2
 
                 # For the rest of the messages
                 return random.choice(CATEGORIES["r;" + i])
@@ -63,9 +66,10 @@ def get_message(user_input):
 
         # Make sure chakbot responses. Program can handle empty response, but I don't want that.
         while response == "":
-            response = input("Chakbot: You can't teach me to respond with nothing, it looks bads on me ( o - o )\r\nInput: ")
+            response = input("Chakbot: You can't teach me to respond with nothing, it looks bads on me ( o - o )" +
+                             "\r\nInput: ")
 
-        if (response.lower() == "cancel"):
+        if response.lower() == "cancel":
             return "Cancelled Successfully"
         else:
             return teach("taught" + user_input.replace(' ', ''), user_input, response)

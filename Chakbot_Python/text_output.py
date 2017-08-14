@@ -41,6 +41,11 @@ HELP_EX = {
             "Example: game 1"
 }
 
+GAMES_MENU = str("Chakbot: Sure, here are the games\r\n" +
+                 "1. Tic Tac Toe\r\n" +
+                 "2. Trivia\r\n"
+)
+
 INTRO = str("====================================================\r\n" +
             "Hello! My name is Chakbot! <(^ O ^ v) \r\n" +
             "Type 'help' if you want to see the help menu.\r\n" +
@@ -99,5 +104,33 @@ TIC_TAC_TOE_WIN_CONDITIONS = [
     {'q', 's', 'c'}, {'z', 's', 'e'}
 ]
 
+TRIVIA_CATEGORIES = str(
+    "Chakbot: Sure! Which category do you like?\r\n" +
+    "1. Geography\r\n" +
+    "2. Science\r\n" +
+    "3. History\r\n" +
+    "4. Art\r\n" +
+    "5. Music\r\n" +
+    "6. Cultural\r\n" +
+    "7. Technology\r\n"
+)
 
+TRIVIA_CORRESPONDENCE = {
+    '1': "trivia_geography",
+    '2': "trivia_science",
+    '3': "trivia_history",
+    '4': "trivia_art",
+    '5': "trivia_music",
+    '6': "trivia_culture",
+    '7': "trivia_technology"
+}
 
+TRIVIA_ANSWER = {
+    "trivia_geography": ['1', '2', '2', '4', '4', '4', '1', '3'],
+    "trivia_science": ['3', '2', '2', '3', '1', '1', '3', '3'],
+    "trivia_history": ['3', '4', '2', '2', '4', '3', '2', '1'],
+    "trivia_art": ['4', '2', '3'],
+    "trivia_music": ['2', '2', '4'],
+    "trivia_culture": ['3', '4', '4', '2', '1', '2'],
+    "trivia_technology": ['4', '4']
+}
