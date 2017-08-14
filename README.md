@@ -18,17 +18,17 @@ Current features:
 - Unit Conversion
 - Tell time
 
-![teaching](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/teach.png)
-![encrypt](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/encrypt.png)
-![convert](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/convert.png)
-![morse](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/morse.png)
-![calculate](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/calculate.png)
-![game](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/game.png)
+![teaching](https://github.com/kriskirla/AllProjects/blob/master/img/teach.png)
+![encrypt](https://github.com/kriskirla/AllProjects/blob/master/img/encrypt.png)
+![convert](https://github.com/kriskirla/AllProjects/blob/master/img/convert.png)
+![morse](https://github.com/kriskirla/AllProjects/blob/master/img/morse.png)
+![calculate](https://github.com/kriskirla/AllProjects/blob/master/img/calculate.png)
+![game](https://github.com/kriskirla/AllProjects/blob/master/img/game.png)
 
 UI Features (Only on C#):
 - Different Themes
 
-![Chakbot: Machine learning in C#](https://github.com/kriskirla/AllProjects/blob/master/chakbot.PNG)
+![Chakbot: Machine learning in C#](https://github.com/kriskirla/AllProjects/blob/master/img/CSchakbot.PNG)
 
 This is still in progress, so if you want to play with it, head to the debug file inside of Chakbot and run the execution.
 
