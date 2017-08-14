@@ -18,7 +18,7 @@ Current features:
 - Unit Conversion
 - Tell time
 
-![teaching](https://github.com/kriskirla/AllProjects/blob/master/img/teach.png =200x100)
+<img src="https://github.com/kriskirla/AllProjects/blob/master/img/teach.png" width="200" height="100">
 ![encrypt](https://github.com/kriskirla/AllProjects/blob/master/img/encrypt.png)
 ![convert](https://github.com/kriskirla/AllProjects/blob/master/img/convert.png)
 ![morse](https://github.com/kriskirla/AllProjects/blob/master/img/morse.png)
