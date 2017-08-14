@@ -19,6 +19,8 @@ Current features:
 - Unit Conversion
 - Tell time
 
+There is not much UI for the Python Chakbot as it will be used for another project.
+
 # Demo
 - An example of one of the ways to teach Chakbot
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/teach.png" width="500" height="250"/>
