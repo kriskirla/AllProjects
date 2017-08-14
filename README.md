@@ -18,12 +18,12 @@ Current features:
 - Unit Conversion
 - Tell time
 
-![teaching](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/teach.PNG)
-![encrypt](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/encrypt.PNG)
-![convert](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/convert.PNG)
-![morse](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/morse.PNG)
-![calculate](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/calculate.PNG)
-![game](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/game.PNG)
+![teaching](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/teach.png)
+![encrypt](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/encrypt.png)
+![convert](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/convert.png)
+![morse](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/morse.png)
+![calculate](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/calculate.png)
+![game](https://github.com/kriskirla/AllProjects/tree/master/Chakbot_Python/img/game.png)
 
 UI Features (Only on C#):
 - Different Themes
