@@ -1,13 +1,13 @@
-greeting=sup;hey;hello;hi;yo;hiii;heyy;helloo;hey whats up;chakbot;whats up;hello chakbot;hey chakbot;hi chakbot;sup chakbot
-r;greeting=Sup;Hey;Hello;Hi;Yo;Heyy;Helloo
-greetingcont=whats up;how are you;whats new;whats up chakbot
+greeting=sup;hey;hello;hi;yo;hiii;heyy;helloo;chakbot;hello chakbot;hey chakbot;hi chakbot;sup chakbot
+r;greeting=Sup;Hey;Hello;Hi;Hello
+greetingcont=whats up;how are you;whats new;whats up chakbot;hey whats up
 r;greetingcont=Nothing special; Same as usual; Working hard to learn more =]
 greetresponse=yes;no;nothing much;nothing special
 r;greetresponse=I see; lol; Oh I see
 morning=good morning;morning;mornin
 r;morning=Good Morning, have a nice day;Enjoy your day!;Good Morning =]
-salute=bye;c u;bye bye;see u;later;take care;peace;see you;
-r;salute=Bye;Bye bye;See u;Later;Take care;Peace;Stay safe;
+salute=bye;c u;bye bye;see u;later;take care;peace;see you
+r;salute=Bye;Bye bye;See u;Later;Take care;Peace;Stay safe
 laugh=lol;haha;hah;hehe;uhh;uh;uh..
 r;laugh=??;what?;?;hm?;?;hmm?;...?
 joke=tell me a joke;tell me something funny
@@ -49,4 +49,5 @@ r;taughtlolalmostscrewedup=That's okay, it happens.
 taughtiscrewedup=i screwed up
 r;taughtiscrewedup=It'll be alright, it happens.
 askingdate=what is todays date;whats today;whats the date;what is the date;today is;todays date;today is what;date today;whats todays date
-r;askingdate=It is;It's;Today is
+taughtwhosthepresidentoftheunitedstates=whos the president of the united states
+r;taughtwhosthepresidentoftheunitedstates=Donald Trump
