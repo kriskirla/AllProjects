@@ -19,12 +19,11 @@ Current features:
 - Tell time
 
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/teach.png" width="500" height="250"/>
-
-![encrypt](https://github.com/kriskirla/AllProjects/blob/master/img/encrypt.png)
-![convert](https://github.com/kriskirla/AllProjects/blob/master/img/convert.png)
-![morse](https://github.com/kriskirla/AllProjects/blob/master/img/morse.png)
-![calculate](https://github.com/kriskirla/AllProjects/blob/master/img/calculate.png)
-![game](https://github.com/kriskirla/AllProjects/blob/master/img/game.png)
+<img src="https://github.com/kriskirla/AllProjects/blob/master/img/encrypt.png" width="500" height="250"/>
+<img src="https://github.com/kriskirla/AllProjects/blob/master/img/convert.png" width="500" height="250"/>
+<img src="https://github.com/kriskirla/AllProjects/blob/master/img/morse.png" width="500" height="250"/>
+<img src="https://github.com/kriskirla/AllProjects/blob/master/img/calculate.png" width="500" height="250"/>
+<img src="https://github.com/kriskirla/AllProjects/blob/master/img/game.png" width="500" height="250"/>
 
 UI Features (Only on C#):
 - Different Themes
