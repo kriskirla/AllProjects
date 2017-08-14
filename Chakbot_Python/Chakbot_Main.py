@@ -77,7 +77,8 @@ def response_decider():
             if len(user_input) <= 4:
                 # Chakbot will request message to translate to morse
                 print(GAMES_MENU)
-                print(str(game_launcher(input("Chakbot: Which game would you like to play?\r\nInput: "))))
+                print("Chakbot: " +
+                      str(game_launcher(input("Chakbot: Which game would you like to play?\r\nInput: "))))
             else:
                 # Conversion following decrypt
                 print('Chakbot: ' + str(game_launcher(user_input[5:])))
