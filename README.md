@@ -1,6 +1,6 @@
 # Current Progress:
-- Translation to Python has been completed. It is currently under regression testing.
-- When testing is completed, Chakbot will be tested on RPi3 to run on 16x2 LCD Display
+- Adding Game Functionality to Chakbot (Currently has Tic Tac Toe and Trivia)
+- When regression testing is completed, Chakbot will be tested on RPi3 to run on 16x2 LCD Display
 
 # Future Projects:
 - Actual Machine Learning. Currently Chakbot will only learn if you teach it, not really "learning" per se. This feature will be added as soon as I learn more about AI in university.
@@ -58,6 +58,8 @@ For C# (Not recommended as it is outdated):
 The other programs were created a few years ago, which inspired the functionalities of Chakbot.
 
 # Logs
+[2017-08-14] Started Trivia Game
+[2017-08-11] Started Game Section, Started Tic Tac Toe Game
 [2017-08-11] Completed Translation from C# to Python  
 [2017-07-15] Started Learning RPi3  
 [2017-07-06] Started Translation Project from C# to Python  
