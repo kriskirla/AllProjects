@@ -18,7 +18,7 @@ Current features:
 - Unit Conversion
 - Tell time
 
-# Images
+# Demo
 - An example of one of the ways to teach Chakbot
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/teach.png" width="500" height="250"/>
 - Multiple ways to Encrypt and Decrpyt messages
@@ -39,16 +39,17 @@ UI Features (Only on C#):
 
 This is still in progress, so if you want to play with it, head to the debug file inside of Chakbot and run the execution.
 
-Nessessary Files:
-- Chakbot.exe
+# Instructions
+For Python:
+- Simply download the Chakbot_Python folder and execute Chakbot_Main.py
+- You have to use Python 3 (It will not work with Python 2 and below)
 
-Good to haves:
-- brain.txt
-- config.txt
-
+Note:
 If you start Chakbot without brain.txt, then Chakbot will not know how to answer anything (You will have to teach Chakbot from scratch.)
 
-config.txt is only there to store personal preferences
+For C# (Not recommended as it is outdated):
+- Download the debug folder (Chakbot/Chakbot/bin/Debug)
+- Run Chakbot.exe within the debug folder
 
 # Other two programs
 The other programs were created a few years ago, which inspired the functionalities of Chakbot.
