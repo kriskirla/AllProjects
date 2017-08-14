@@ -1,4 +1,5 @@
 import re
+from text_output import METRICS
 
 
 def calculate(user_input):
@@ -25,43 +26,6 @@ def convert(user_input):
     Returns:
         str: The result after the conversion
     """
-    metrics = {
-        'Length': {
-            'mm': 1000000,
-            'cm': 100000,
-            'm': 1000,
-            'km': 1,
-            'mi': 0.62137, 'mile': 0.62137, 'miles': 0.62137,
-            'ft': 3280.84, 'feet': 3280.84,
-            'in': 39370.1, 'inch': 39370.1,
-            'yd': 1093.61, 'yard': 1093.61,
-        },
-        'Digital': {
-            'b': 8,
-            'B': 1,
-            'KB': 1024,
-            'MB': 1048576,
-            'GB': 1073741824.0005517,
-            'TB': 1099511627775.9133,
-            'PB': 1125899906842782.8
-        },
-        'Mass': {
-            'lb': 0.00220462,
-            'oz': 0.035274,
-            'mg': 1000,
-            'g': 1,
-            'kg': 0.001
-        },
-        "Volume": {
-            'tsp': 202.884,
-            'tbsp': 62.628,
-            'c': 4.16667,
-            'ml': 1000,
-            'l': 1,
-            'pt': 2.11338,
-            'gal': 0.264172
-        }
-    }
 
     try:
         # Parse string
@@ -72,9 +36,9 @@ def convert(user_input):
         unit_2 = user_input[user_input.index('to') + 2:]
 
         # Find out the metric category
-        for i in metrics.keys():
-            if unit_1 in metrics[i].keys() and unit_2 in metrics[i].keys():
-                return str(round(unit_number * (metrics[i][unit_2] / metrics[i][unit_1]), 3)) + \
+        for i in METRICS.keys():
+            if unit_1 in METRICS[i].keys() and unit_2 in METRICS[i].keys():
+                return str(round(unit_number * (METRICS[i][unit_2] / METRICS[i][unit_1]), 3)) + \
                        unit_2 + " [" + i + " Conversion]"
 
         return "Please make sure the two units are convertible."
