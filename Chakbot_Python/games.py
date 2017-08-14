@@ -1,4 +1,5 @@
 from text_output import *
+from learning import CATEGORIES
 import random
 
 
@@ -9,15 +10,28 @@ def game_launcher(selection):
         selection (str) : Name of the game
 
     Returns:
-        Nothing
+        Message of termination corresponding to each game
     """
+    selection = selection.lower()
+
     if selection == "tic tac toe" or selection == '1':
         return tic_tac_toe(TIC_TAC_TOE, TIC_TAC_TOE_WIN_CONDITIONS)
+    if selection == "trivia" or selection == '2':
+        return trivia(CATEGORIES)
 
     return "I don't know how to play that game yet =["
 
 
 def tic_tac_toe(grid, cond):
+    """ TIC TAC TOE GAME
+
+    Args:
+        grid (str): This is the string representation of Tic Tac Toe
+        cond (list): This holds all of the winning conditions
+
+    Return:
+        Message of termination
+    """
     moves = {'q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c'}
     winner = ""
     user = set()
@@ -81,6 +95,16 @@ def tic_tac_toe(grid, cond):
 
 
 def tic_tac_toe_checker(player, cond, moves):
+    """ Game Status Checker
+
+    Args:
+        player (str): The current player
+        cond (list): This holds all of the winning conditions
+        moves (list): All available moves
+
+    Return:
+        The status of the game
+    """
     for case in cond:
         if player & case in cond:
             return 0
@@ -89,3 +113,57 @@ def tic_tac_toe_checker(player, cond, moves):
 
     return 2
 
+
+def trivia(categories):
+    """ Trivia Game
+
+    Args:
+        categories (dict): All of the available categories
+
+    Return:
+        Message of termination
+    """
+    while True:
+        # Menu
+        print(TRIVIA_CATEGORIES)
+        category = ""
+
+        # Pick Category
+        while True:
+            selection = input("Category: ").lower()
+
+            if selection in categories:
+                category = "trivia" + selection
+                break
+            if selection in TRIVIA_CORRESPONDENCE.keys():
+                category = TRIVIA_CORRESPONDENCE[selection]
+                break
+
+            print("Please pick one of the available categories =]\r\n")
+
+        # Game Begins
+        pick = random.randint(0, len(categories[category]) - 1)
+        print("\r\nQuestion: " + categories[category][pick] + "?\r\n")
+        print(categories["q;" + category][pick] + "\r\n")
+        answer = input("Answer: ").lower()
+
+        # Adding separator to look better
+        print("-----")
+
+        if answer == categories["r;" + category][pick].lower():
+            print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
+        elif answer == TRIVIA_ANSWER[category][pick]:
+            print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
+        else:
+            print("Chakbot: That is incorrect!\r\nChakbot: The Answer is " + categories["r;" + category][pick] +
+                  "\r\n\r\n" + categories["t;" + category][pick])
+
+        print("-----\r\n")
+
+        # Prompt user to play again
+        terminate = str(input("Would you like to play again? (y/n)\r\nOption: ")).lower()
+
+        if terminate == 'n':
+            return "Thanks for playing!"
+        elif terminate != 'y':
+            return "I'll take that as a no =["

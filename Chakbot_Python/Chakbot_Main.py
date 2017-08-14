@@ -76,8 +76,7 @@ def response_decider():
         elif user_input[:4].lower() == "game":
             if len(user_input) <= 4:
                 # Chakbot will request message to translate to morse
-                print('Chakbot: Sure, here are the games\r\n' +
-                      "1. tic tac toe")
+                print(GAMES_MENU)
                 print(str(game_launcher(input("Chakbot: Which game would you like to play?\r\nInput: "))))
             else:
                 # Conversion following decrypt
@@ -87,7 +86,7 @@ def response_decider():
             reply = get_message(user_input)
 
             # For if user wants to stop talking
-            if (reply == 0):
+            if reply == 0:
                 option = input("Chakbot: Do you want to leave me? (y/n) <(T ^ T v)\r\nOption: ")
                 if option == 'y':
                     print(str("Chakbot: " + random.choice(CATEGORIES["r;salute"])))
@@ -96,9 +95,12 @@ def response_decider():
                     print("Chakbot: Yay! We can continue talking ^( ^ o ^ )>")
                 else:
                     print("Chakbot: That's not a valid option, so you are staying with me.")
-            elif (reply == 1):
+            elif reply == 1:
                 # For asking dates
                 print("Chakbot: " + random.choice(CATEGORIES["r;askingdate"]) + " " + str(datetime.datetime.now()))
+            elif reply == 2:
+                # Placeholder for corresponding trivia
+                pass
             else:
                 # For all responses
                 print("Chakbot: " + reply)
