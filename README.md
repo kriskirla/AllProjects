@@ -22,17 +22,17 @@ Current features:
 There is not much UI for the Python Chakbot as it will be used for another project.
 
 # Demo
-- An example of one of the ways to teach Chakbot
+1. An example of one of the ways to teach Chakbot
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/teach.png" width="500" height="250"/>
-- Multiple ways to Encrypt and Decrpyt messages
+2. Multiple ways to Encrypt and Decrpyt messages
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/encrypt.png" width="500" height="250"/>
-- Playing games with Chakbot
+3. Playing games with Chakbot
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/game.png" width="500" height="250"/>
-- Doing some basic conversions
+4. Doing some basic conversions
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/convert.png" width="500" height="250"/>
-- Having fun with Morse Code
+5. Having fun with Morse Code
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/morse.png" width="500" height="250"/>
-- Built-in Calculator
+6. Built-in Calculator
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/calculate.png" width="500" height="250"/>
 
 UI Features (Only on C#):
