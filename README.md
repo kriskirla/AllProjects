@@ -1,5 +1,5 @@
 # Current Progress:
-- Adding Game Functionality to Chakbot (Currently has Tic Tac Toe and Trivia)
+- Completed Tic Tac Toe and Trivia (Currently has 60 questions across different categories)
 - When regression testing is completed, Chakbot will be tested on RPi3 to run on 16x2 LCD Display
 
 # Future Projects:
@@ -58,6 +58,7 @@ For C# (Not recommended as it is outdated):
 The other programs were created a few years ago, which inspired the functionalities of Chakbot.
 
 # Logs
+[2017-08-15] Complete Tic Tac Toe Game and Trivia Game (It will keep updating more questions)
 [2017-08-14] Started Trivia Game
 [2017-08-11] Started Game Section, Started Tic Tac Toe Game
 [2017-08-11] Completed Translation from C# to Python  
