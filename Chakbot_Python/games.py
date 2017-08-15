@@ -37,14 +37,20 @@ def tic_tac_toe(grid, cond):
     user = set()
     chakbot = set()
 
+    # Difficulty
+    difficulty = input("1) Jokes\r\n2) Impossible\r\nDifficulty: ")
+    if not (difficulty == '1' or difficulty == '2' or
+            difficulty.lower() == "jokes" or difficulty.lower() == "impossible"):
+        return "That's not a valid option. Game Terminated."
+
     # Request player order
     player = input("Do you want to go first or second (1 or 2)\r\nUser: ")
-    if not (player == '1' or player == '2'):
+    if not (player == '1' or player == '2' or player.lower() == "first" or player.lower() == "second"):
         return "Cheater! Game terminated."
 
     # Game Begins
     # If player goes first
-    if player == '2':
+    if player == '2' or player.lower() == "second":
         chakbot.add('s')
         moves.remove('s')
         grid = grid.replace('s', 'O')
@@ -59,7 +65,7 @@ def tic_tac_toe(grid, cond):
             move = input("Your Move: ")
 
             if move in moves:
-                grid = grid.replace(move, '#')
+                grid = grid.replace(move, 'X')
                 user.add(move)
                 moves.remove(move)
                 valid = True
@@ -76,7 +82,13 @@ def tic_tac_toe(grid, cond):
 
         # If no winner, continue
         if winner == "":
-            move = random.sample(moves, 1)[0]
+            if difficulty == '1' or difficulty.lower() == "easy":
+                # Easy
+                move = random.sample(moves, 1)[0]
+            else:
+                # Hard
+                move = ttt_optimize(chakbot, user, cond, moves)
+
             grid = grid.replace(move, 'O')
             chakbot.add(move)
             moves.remove(move)
@@ -106,12 +118,58 @@ def tic_tac_toe_checker(player, cond, moves):
         The status of the game
     """
     for case in cond:
+        # Player wins
         if player & case in cond:
             return 0
+        # Tie
         elif len(moves) == 0:
             return 1
-
+    # Neither
     return 2
+
+
+def ttt_optimize(chakbot, user, cond, moves):
+    # First check if Chakbot can win
+    for i in moves:
+        if tic_tac_toe_checker(chakbot | {i}, cond, moves - {i}) == 0:
+            return i
+
+    # If not, then check if player can win
+    for i in moves:
+        if tic_tac_toe_checker(user | {i}, cond, moves - {i}) == 0:
+            return i
+
+    # If not, place the next most probable winning move (Diagonal first then horizontal
+    # Middle is most probable
+    if 's' in moves:
+            return 's'
+
+    # Block 2-ways
+    if {'q', 'c'} | user == user or {'z', 'e'} | user == user:
+        if 'w' in moves: return 'w'
+        elif 'a' in moves: return 'a'
+        elif 'x' in moves: return 'x'
+        elif 'd' in moves: return 'd'
+
+    # Diagonal next to user then v/h
+    # Have to do both ways since set has no order
+    if 'q' in moves and 'c' in moves:
+        if 'w' in user or 'a' in user:
+            return 'q'
+        else:
+            return 'c'
+    elif 'e' in moves and 'z' in moves:
+        if 'w' in user or 'd' in user:
+            return 'e'
+        else:
+            return 'z'
+    elif 'w' in moves and 'x' in moves:
+        return 'w' or 'x'
+    elif 'a' in moves and 'd' in moves:
+        return 'a' or 'd'
+
+    # This will always end in tie
+    return random.sample(moves, 1)[0]
 
 
 def trivia(categories):
@@ -170,7 +228,7 @@ def trivia(categories):
             elif terminate != 'y':
                 return "I'll take that as a no =["
 
-            confirm = input("Chakbot: Same Category?\r\nOption: ").lower()
+            confirm = input("Chakbot: Same Category? (y/n)\r\nOption: ").lower()
 
             if confirm == 'n':
                 same = False
