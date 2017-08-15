@@ -112,7 +112,8 @@ TRIVIA_CATEGORIES = str(
     "4. Art\r\n" +
     "5. Music\r\n" +
     "6. Cultural\r\n" +
-    "7. Technology\r\n"
+    "7. Technology\r\n" +
+    "8. Religion\r\n"
 )
 
 TRIVIA_CORRESPONDENCE = {
@@ -122,15 +123,17 @@ TRIVIA_CORRESPONDENCE = {
     '4': "trivia_art",
     '5': "trivia_music",
     '6': "trivia_culture",
-    '7': "trivia_technology"
+    '7': "trivia_technology",
+    '8': "trivia_religion"
 }
 
 TRIVIA_ANSWER = {
     "trivia_geography": ['1', '2', '2', '4', '4', '4', '1', '1'],
     "trivia_science": ['3', '2', '2', '3', '1', '1', '3', '3'],
     "trivia_history": ['3', '4', '2', '2', '4', '3', '2', '1'],
-    "trivia_art": ['4', '2', '3'],
-    "trivia_music": ['2', '2', '4'],
+    "trivia_art": ['4', '2', '3', '2', '2'],
+    "trivia_music": ['2', '2', '4', '2', '3', '4', '3', '3', '3'],
     "trivia_culture": ['3', '4', '4', '2', '1', '2'],
-    "trivia_technology": ['4', '4']
+    "trivia_technology": ['4', '4', '2', '2', '3', '2', '3', '2', '4', '4', '4'],
+    "trivia_religion": ['2', '1', '3', '2', '1']
 }

@@ -14,12 +14,15 @@ def game_launcher(selection):
     """
     selection = selection.lower()
 
-    if selection == "tic tac toe" or selection == '1':
-        return tic_tac_toe(TIC_TAC_TOE, TIC_TAC_TOE_WIN_CONDITIONS)
-    if selection == "trivia" or selection == '2':
-        return trivia(CATEGORIES)
+    try:
+        if selection == "tic tac toe" or selection == '1':
+            return tic_tac_toe(TIC_TAC_TOE, TIC_TAC_TOE_WIN_CONDITIONS)
+        if selection == "trivia" or selection == '2':
+            return trivia(CATEGORIES)
 
-    return "I don't know how to play that game yet =["
+        return "I don't know how to play that game yet =["
+    except:
+        return "Something went wrong, please report to developer."
 
 
 def tic_tac_toe(grid, cond):
