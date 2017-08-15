@@ -97,7 +97,7 @@ TIC_TAC_TOE = str("\r\n q | w | e \r\n" +
 
 TIC_TAC_TOE_WIN_CONDITIONS = [
     # Columns
-    {'q', 'a', 's'}, {'w', 's', 'x'}, {'e', 'd', 'c'},
+    {'q', 'a', 'z'}, {'w', 's', 'x'}, {'e', 'd', 'c'},
     # Rows
     {'q', 'w', 'e'}, {'a', 's', 'd'}, {'z', 'x', 'c'},
     # Diagonals

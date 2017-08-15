@@ -66,8 +66,7 @@ def get_message(user_input):
 
         # Make sure chakbot responses. Program can handle empty response, but I don't want that.
         while response == "":
-            response = input("Chakbot: You can't teach me to respond with nothing, it looks bad on me ( o - o )" +
-                             "\r\nInput: ")
+            return "Cancelled"
 
         if response.lower() == "cancel":
             return "Cancelled Successfully"
