@@ -27,7 +27,7 @@ There is not much UI for the Python Chakbot as it will be used for another proje
 2. Multiple ways to Encrypt and Decrpyt messages
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/encrypt.png" width="500" height="250"/>
 3. Playing games with Chakbot
-<img src="https://github.com/kriskirla/AllProjects/blob/master/img/game.png" width="500" height="250"/>
+
 4. Doing some basic conversions
 <img src="https://github.com/kriskirla/AllProjects/blob/master/img/convert.png" width="500" height="250"/>
 5. Having fun with Morse Code
