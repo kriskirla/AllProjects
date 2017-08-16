@@ -30,7 +30,7 @@ def encrypt(message):
 
         return res + " [" + code + ']'
 
-    except:
+    except Exception:
         return "Encrpytion Error"
 
 

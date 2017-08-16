@@ -21,8 +21,8 @@ def game_launcher(selection):
             return trivia(CATEGORIES)
 
         return "I don't know how to play that game yet =["
-    except:
-        return "Something went wrong, please report to developer."
+    except Exception as ex:
+        print(ex)
 
 
 def tic_tac_toe(grid, cond):
@@ -231,10 +231,10 @@ def trivia(categories):
             elif terminate != 'y':
                 return "I'll take that as a no =["
 
-            confirm = input("Chakbot: Same Category? (y/n)\r\nOption: ").lower()
+            confirm = str(input("Chakbot: Same Category? (y/n)\r\nOption: ")).lower()
 
             if confirm == 'n':
                 same = False
             elif confirm != 'y':
-                print("Guessing that's a no")
+                print("Chakbot: Guessing that's a no =]")
                 same = False

@@ -106,6 +106,7 @@ TIC_TAC_TOE_WIN_CONDITIONS = [
 
 TRIVIA_CATEGORIES = str(
     "Chakbot: Sure! Which category do you like?\r\n" +
+    "0. Puzzle\r\n" +
     "1. Geography\r\n" +
     "2. Science\r\n" +
     "3. History\r\n" +
@@ -117,6 +118,7 @@ TRIVIA_CATEGORIES = str(
 )
 
 TRIVIA_CORRESPONDENCE = {
+    '0': "trivia_puzzle",
     '1': "trivia_geography",
     '2': "trivia_science",
     '3': "trivia_history",
@@ -128,6 +130,7 @@ TRIVIA_CORRESPONDENCE = {
 }
 
 TRIVIA_ANSWER = {
+    "trivia_puzzle": ['3', '3', '5', '0', '1', '3', '2', '3', '4', '1'],
     "trivia_geography": ['1', '2', '2', '4', '4', '4', '1', '1'],
     "trivia_science": ['3', '2', '2', '3', '1', '1', '3', '3'],
     "trivia_history": ['3', '4', '2', '2', '4', '3', '2', '1'],
