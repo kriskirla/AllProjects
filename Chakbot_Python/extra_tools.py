@@ -42,5 +42,5 @@ def convert(user_input):
                        unit_2 + " [" + i + " Conversion]"
 
         return "Please make sure the two units are convertible."
-    except:
+    except Exception:
         return "Please check your syntax and make sure the unit is correct."

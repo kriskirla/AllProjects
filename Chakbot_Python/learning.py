@@ -79,7 +79,7 @@ def get_message(user_input):
         #    while ';' in pick_categ:
         #        pick_categ, item = random.choice(list(CATEGORIES.items()))
         #    return random.choice(item)
-    except all:
+    except Exception:
         return "Something went wrong, please trace the steps you performed and report to developer."
 
 
@@ -133,5 +133,5 @@ def teach(categ, request, response):
         read_brain()
 
         return "Thank you, I've learned it!"
-    except:
+    except Exception:
         return "Please make sure your format is correct. Check help for more details."
