@@ -62,14 +62,15 @@ def get_message(user_input):
                 return random.choice(CATEGORIES["r;" + i])
 
         # If it's not learned, ask to teach
-        response = input("Chakbot: I did not learn how to respond to this. How should I respond? (or cancel)\r\nInput: ")
+        response = input("Chakbot: I did not learn how to respond to this. How should I respond? " +
+                         "(or type cancel)\r\nInput: ")
 
         # Make sure chakbot responses. Program can handle empty response, but I don't want that.
         while response == "":
             return "Cancelled"
 
         if response.lower() == "cancel":
-            return "Cancelled Successfully"
+            return "Okay! I cancelled it!"
         else:
             return teach("taught" + user_input.replace(' ', ''), user_input, response)
             
@@ -80,7 +81,7 @@ def get_message(user_input):
         #        pick_categ, item = random.choice(list(CATEGORIES.items()))
         #    return random.choice(item)
     except Exception:
-        return "Something went wrong, please trace the steps you performed and report to developer."
+        return "Please make sure your brain.txt is UTF-8"
 
 
 def teach(categ, request, response):

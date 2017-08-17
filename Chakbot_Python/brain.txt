@@ -1,4 +1,4 @@
-﻿greeting=sup;hey;hello;hi;yo;hiii;heyy;helloo;chakbot;hello chakbot;hey chakbot;hi chakbot;sup chakbot
+greeting=sup;hey;hello;hi;yo;hiii;heyy;helloo;chakbot;hello chakbot;hey chakbot;hi chakbot;sup chakbot
 r;greeting=Sup;Hey;Hello;Hi;Hello
 greetingcont=whats up;how are you;whats new;whats up chakbot;hey whats up
 r;greetingcont=Nothing special; Same as usual; Working hard to learn more =]
@@ -87,3 +87,11 @@ r;taughtiscrewedup=It'll be alright, it happens.
 askingdate=what is todays date;whats today;whats the date;what is the date;today is;todays date;today is what;date today;whats todays date
 taughtwhosthepresidentoftheunitedstates=whos the president of the united states
 r;taughtwhosthepresidentoftheunitedstates=Donald Trump
+cancel=cancel
+r;cancel=cancel
+taughtnooryes=no or yes
+r;taughtnooryes=yes or no
+taughtyesorno=yes or no
+r;taughtyesorno=no or yes
+taughtwhoiskrislai=who is kris lai
+r;taughtwhoiskrislai=his middle name is     always

@@ -14,8 +14,8 @@ def response_decider():
         user_input = input("User: ")
 
         if user_input.lower() == "":
-            print("Enter something ( - _ -\")")
-        elif user_input.lower() == "help":
+            print("Chakbot: Enter something ( - _ -\")")
+        elif user_input.lower() == "help" or user_input.lower() == "menu":
             print(HELP_MENU)
         elif user_input[:4].lower() == "help" and user_input[5:] in HELP_EX.keys():
             print("{\r\n" + HELP_EX[user_input[5:]] + "\r\n}\r\n")
