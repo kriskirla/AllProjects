@@ -184,57 +184,122 @@ def trivia(categories):
     Return:
         Message of termination
     """
-    while True:
-        # Menu
-        print(TRIVIA_CATEGORIES)
-        category = ""
+    main_menu = True
+    while main_menu:
+        # Main Menu
+        print(TRIVIA_MENUS[0] + "Chakbot: Which mode would you like to play?")
+        mode = input("1) Challenge Mode: Test your abilities across different categories!\r\n" +
+                     "2) Normal Mode: Pick any categories of your choice!\r\n3) Quit Game\r\n\r\nOption: ")
 
-        # Pick Category
-        while True:
-            selection = input("Category: ").lower()
+        if mode == "1" or mode.lower() == "challenge mode":
+            # Challenge Mode
+            print(TRIVIA_MENUS[1])
+            challenge_mode = True
+            while challenge_mode:
+                # Counting system
+                point = 0
+                count = 1
 
-            if selection in categories:
-                category = "trivia" + selection
-                break
-            if selection in TRIVIA_CORRESPONDENCE.keys():
-                category = TRIVIA_CORRESPONDENCE[selection]
-                break
+                # Questions start
+                for i in TRIVIA_ANSWER.keys():
+                    print(i.replace("trivia_", "") + " Category")
+                    if trivia_game(categories, i) == 0:
+                        point += 1
+                    count += 1
 
-            print("Please pick one of the available categories =]\r\n")
+                # Display Score
+                if point >= TRIVIA_POINTS["high"]:
+                    print("Well done! You scored: " + str(point) + " out of " + str(len(TRIVIA_ANSWER.keys())))
+                elif TRIVIA_POINTS["low"] <= point < TRIVIA_POINTS["high"]:
+                    print("Not Bad! You scored: " + str(point) + " out of " + str(len(TRIVIA_ANSWER.keys())))
+                else:
+                    print("Chakbot: Good Effort! You scored: " + str(point) +
+                          " out of " + str(len(TRIVIA_ANSWER.keys())))
 
-        # Game Begins
-        same = True
-        while same:
-            pick = random.randint(0, len(categories[category]) - 1)
-            print("\r\nQuestion: " + categories[category][pick] + "?\r\n")
-            print(categories["q;" + category][pick] + "\r\n")
-            answer = input("Answer: ").lower()
+                # End Menu
+                selection = input("Chakbot: What would you like to do?\r\n" +
+                                  "1. Play this mode again\r\n" +
+                                  "2. Main Menu\r\n" +
+                                  "3. Quit Game\r\n" +
+                                  "Option: ")
 
-            # Adding separator to look better
-            print("-----")
+                if selection == '2':
+                    challenge_mode = False
+                elif selection != '1':
+                    challenge_mode = False
+                    main_menu = False
+        elif mode == "2" or mode.lower() == "normal mode":
+            # Individual Question Mode
+            print(TRIVIA_MENUS[2])
+            normal_mode = True
+            while normal_mode:
+                # Menu
+                print(TRIVIA_CATEGORIES)
+                category = ""
 
-            if answer == categories["r;" + category][pick].lower():
-                print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
-            elif answer == TRIVIA_ANSWER[category][pick]:
-                print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
-            else:
-                print("Chakbot: That is incorrect!\r\nChakbot: The Answer is " + categories["r;" + category][pick] +
-                      "\r\n\r\n" + categories["t;" + category][pick])
+                # Pick Category
+                while True:
+                    selection = input("Category: ").lower()
 
-            print("-----\r\n")
+                    if selection in categories:
+                        category = "trivia" + selection
+                        break
+                    if selection in TRIVIA_CORRESPONDENCE.keys():
+                        category = TRIVIA_CORRESPONDENCE[selection]
+                        break
 
-            # Prompt user to play again
-            terminate = str(input("Chakbot: Would you like to play again? (y/n)\r\nOption: ")).lower()
+                    print("Please pick one of the available categories =]\r\n")
 
-            if terminate == 'n':
-                return "Thanks for playing!"
-            elif terminate != 'y':
-                return "I'll take that as a no =["
+                # Pick question and corresponding answer
+                same = True
+                while same:
+                    trivia_game(categories, category)
 
-            confirm = str(input("Chakbot: Same Category? (y/n)\r\nOption: ")).lower()
+                    # Prompt user to play again
+                    selection = input("Chakbot: What would you like to do?\r\n" +
+                                      "1. Play this category again\r\n" +
+                                      "2. Change Category\r\n" +
+                                      "3. Main Menu\r\n" +
+                                      "4. Quit Game\r\n" +
+                                      "Option: ")
 
-            if confirm == 'n':
-                same = False
-            elif confirm != 'y':
-                print("Chakbot: Guessing that's a no =]")
-                same = False
+                    if selection == '2':
+                        same = False
+                    elif selection == '3':
+                        same = False
+                        normal_mode = False
+                    elif selection != '1':
+                        same = False
+                        normal_mode = False
+                        main_menu = False
+        elif mode == "3" or mode.lower() == "quit game":
+            return "Game Ended!"
+        else:
+            print("Chakbot: Please pick one of the available options.\r\n")
+
+    return "Thanks for playing!"
+
+
+def trivia_game(categories, category):
+    # Game Begins
+    pick = random.randint(0, len(categories[category]) - 1)
+    print("\r\nQuestion: " + categories[category][pick] + "?\r\n")
+    print(categories["q;" + category][pick] + "\r\n")
+    answer = input("Answer: ").lower()
+
+    # Adding separator to look better
+    print("-----")
+
+    if answer == categories["r;" + category][pick].lower():
+        print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
+        print("-----\r\n")
+        return 0
+    elif answer == TRIVIA_ANSWER[category][pick]:
+        print("Chakbot: That is correct!\r\n\r\n" + categories["t;" + category][pick])
+        print("-----\r\n")
+        return 0
+    else:
+        print("Chakbot: That is incorrect!\r\nChakbot: The Answer is " + categories["r;" + category][pick] +
+              "\r\n\r\n" + categories["t;" + category][pick])
+        print("-----\r\n")
+        return 1
