@@ -5,7 +5,7 @@
 # Future Projects:
 - Actual Machine Learning. Currently Chakbot will only learn if you teach it, not really "learning" per se. This feature will be added as soon as I learn more about AI in university.
 - Speech recognition. This makes talking with Chakbot possible instead of inputting with keyboard. 
-- IOS and Android App. As a mac user, that's what I always wanted to do. Why do you need this over Google Assistant and Siri? Well you don't, it's just for fun.
+- IOS and Android App. Why do you need this over Google Assistant and Siri? Well you don't, it's just for fun.
 
 # Chakbot
 This is a program that you can have a chat with (how it began).
