@@ -1,3 +1,6 @@
+# Note
+This is the C# version of ChakBot and it is outdated. Please check out ChakBot for Python.
+
 # Current Progress:
 - Completed Tic Tac Toe and Trivia (Currently has 70 questions across different categories. More will be added as time goes)
 - When regression testing is completed, Chakbot will be tested on RPi3 to run on 16x2 LCD Display
