@@ -1,6 +1,3 @@
-# Games
-Games created for fun
-
 ## Number Hunter (Inspired by Metal Saga)
 ### Rules
 #### Objective:
