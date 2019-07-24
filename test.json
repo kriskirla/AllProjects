@@ -1,0 +1,5 @@
+// Example JSON response
+{
+  "response_type": "in_channel",
+  "text": "..."
+}
