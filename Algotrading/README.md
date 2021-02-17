@@ -6,15 +6,14 @@ This is just me having fun.
 
 Portfolio_Analyzer
 - Scrape S&P500 holdings
-- Optimize portfolio base on the weights from Efficient Frontier weights and available funds
+- Optimize portfolio base on Efficient Frontier weights and available funds
 
 Stock Forecast
-- Adding more ML trainning model besides SVM to compare results
-- Expanding the range further than monthly
+- Forecast price prediction using Support vector machine model for the next day within the month
 
 Stock Momentum
 - ML Model using decision tree classifier to termine the target
-- Graph for MACD and RSI
+- Graph for Price, MACD and RSI
 
 # Progress Tracking
 
