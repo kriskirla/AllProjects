@@ -1,0 +1,9 @@
+c:\users\319887725\documents\visual studio 2015\Projects\ChakBot\ChakBot\bin\Debug\ChakBot.exe.config
+c:\users\319887725\documents\visual studio 2015\Projects\ChakBot\ChakBot\bin\Debug\ChakBot.exe
+c:\users\319887725\documents\visual studio 2015\Projects\ChakBot\ChakBot\bin\Debug\ChakBot.pdb
+c:\users\319887725\documents\visual studio 2015\Projects\ChakBot\ChakBot\obj\Debug\ChakBot.csprojResolveAssemblyReference.cache
+c:\users\319887725\documents\visual studio 2015\Projects\ChakBot\ChakBot\obj\Debug\ChakBot.Form1.resources
+c:\users\319887725\documents\visual studio 2015\Projects\ChakBot\ChakBot\obj\Debug\ChakBot.Properties.Resources.resources
+c:\users\319887725\documents\visual studio 2015\Projects\ChakBot\ChakBot\obj\Debug\ChakBot.csproj.GenerateResource.Cache
+c:\users\319887725\documents\visual studio 2015\Projects\ChakBot\ChakBot\obj\Debug\ChakBot.exe
+c:\users\319887725\documents\visual studio 2015\Projects\ChakBot\ChakBot\obj\Debug\ChakBot.pdb
